@@ -1,0 +1,34 @@
+{
+  "name": "my.company.simmflocext",
+  "description": "",
+  "devDependencies": {
+    "@sap/grunt-sapui5-bestpractice-build": "1.4.15",
+    "@sap/grunt-sapui5-bestpractice-test": "2.0.1",
+    "@ui5/cli": "^2.14.1",
+    "@sap/ux-ui5-tooling": "1",
+    "rimraf": "3.0.2"
+  },
+  "scripts": {
+    "test": "grunt unit_and_integration_tests",
+    "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#simmflocext-display\"",
+    "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config"
+  },
+  "version": "0.0.1",
+  "private": true,
+  "sapuxLayer": "CUSTOMER_BASE",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  }
+}

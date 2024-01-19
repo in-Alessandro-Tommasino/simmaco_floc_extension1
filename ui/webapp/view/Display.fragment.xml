@@ -1,0 +1,118 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:form="sap.ui.comp.smartform"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    displayBlock="true"
+    xmlns:table="sap.ui.table"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+    <VBox class="sapUiSmallMargin" height="100%" id="VBoxIframe">
+    <core:HTML content="&lt;iframe id=&quot;attachmentframe&quot; height=&quot;100%&quot; frameborder=&quot;0&quot; width=&quot;100%&quot; class=&quot;iframe-full-height&quot; src=&quot;&quot;&gt; &lt;/iframe&gt;">
+</core:HTML>
+        <!-- <f:SimpleForm
+            id="SimpleFormChange354"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            title="Caratteristiche Lineari"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="3"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false"
+        >
+            <f:content> -->
+                
+                  <!-- <VBox>
+                 <OverflowToolbar id="otbSubheader" width="100%">
+                            
+                            <ToolbarSpacer width="auto" />
+                            <Button
+                                id="editButton"
+                                text="Edit"
+                                type="Transparent"
+                                press="onEdit"
+                            />
+                            <Button
+                                id="Salva"
+                                text="Salva"
+                                type="Transparent"
+                                press="SalvaElemeneti"
+                            />
+                        </OverflowToolbar>
+                <ScrollContainer width="100%" horizontal="true">
+                <Table
+                    id="TabellaPrincipale"
+                    growingThreshold="10"
+                    paste="onPaste"
+                    items="{
+                                path: 'lagpModel>/',
+                                sorter: {
+                                    path: 'ClassNumber',
+                                    descending: false,
+                                    group: false
+                                }
+                            }"
+                            fixedLayout="false"
+                >
+                   
+                    <columns>
+                        <Column
+                            width="100%"
+                            mergeDuplicates="true"
+                            mergeFunctionName="getTitle"
+                        >
+                            <Text text="Start Point" />
+                        </Column>
+                        <Column
+                             width="100%"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            hAlign="End"
+                        >
+                            <Text text="End Point" />
+                        </Column>
+                        <Column
+                            width="100%"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            hAlign="Center"
+                        >
+                            <Text text="Estesa" />
+                        </Column>
+                        <Column hAlign="End"  width="100%">
+                            <Text text="UoM" />
+                        </Column>
+                    </columns>
+                    <items >
+                        <ColumnListItem vAlign="Middle" >
+                            <cells >
+                                <Input value="{lagpModel>StartPoint}"></Input>
+                                <Input value="{lagpModel>EndPoint}"></Input>
+                                <Input value="{lagpModel>LinearLength}"></Input>
+                                <Input value="{lagpModel>LinearUnit}"></Input>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                </ScrollContainer>
+            </VBox>   -->
+            <!-- </f:content>
+        </f:SimpleForm> -->
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,63 @@
+<mvc:View
+    height="100%"
+    controllerName="my.company.simmflocext.controller.FlowVS"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:form="sap.ui.comp.smartform"
+>
+    <Page
+        id="page"
+        showHeader="true"
+    >
+        <!-- <customHeader>
+            <Bar>
+                <contentRight>
+                    <Button
+                        id="edit"
+                        text="Edit"
+                        enabled="false"
+                        press="handleEditPress"
+                    />
+                    <Button
+                        id="save"
+                        text="Save"
+                        type="Emphasized"
+                        visible="false"
+                        press="handleSavePress"
+                    />
+                    <Button
+                        id="cancel"
+                        text="Cancel"
+                        visible="false"
+                        press="handleCancelPress"
+                    />
+                </contentRight>
+            </Bar>
+
+        </customHeader> -->
+       
+              
+                
+                       
+                  
+           <content>
+           
+            <Input
+                            
+                            type="Text"
+                            value="2"
+                            placeholder="OK FLOW"
+                           
+                           
+                            class="sapUiSmallMarginBottom"
+                            
+                        >
+                           
+                        </Input>
+           
+           </content>
+    </Page>
+</mvc:View>

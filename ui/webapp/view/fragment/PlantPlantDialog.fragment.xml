@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    controllerName="my.company.simmflocext.view.fragment.PlantPlantDialog"
+    xmlns:core="sap.ui.core">
+    
+    <TableSelectDialog
+        id="PlantPlantDialog"
+        noDataText="Nessun dato"
+        title="Definizione di pianificazione"
+        confirm="onConfigrmPlantPlant"
+        items="{
+            path : '/HT399iSet'
+        }">
+
+             <columns>
+            <Column>
+                <Text text="Divisione"/> 
+            </Column>
+        </columns>
+
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{Iwerk} - {Name1}"/> 
+                </cells>
+            </ColumnListItem>
+        </items>
+
+    </TableSelectDialog>
+
+</core:FragmentDefinition>

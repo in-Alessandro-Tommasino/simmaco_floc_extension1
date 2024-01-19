@@ -1,0 +1,30 @@
+{
+	"welcomeFile": "/index.html",
+	"authenticationMethod": "route",
+	"logout": {
+		"logoutEndpoint": "/do/logout"
+	},
+	"routes": [
+		{
+			"source": "^/sap/(.*)$",
+			"target": "/sap/$1",
+			"destination": "EAM_CONNECTION_CLONING",
+			"authenticationType": "xsuaa",
+			"csrfProtection": false
+		},
+		{
+			"csrfProtection": true,
+			"source": "^/ac/(.*)$",
+			"target": "/ain/$1",
+			"service": "com.sap.dsc.iam.assetcentral",
+			"endpoint": "asset-central-service",
+			"authenticationType": "xsuaa"
+		},
+		{
+			"source": "^(.*)$",
+			"target": "$1",
+			"service": "html5-apps-repo-rt",
+			"authenticationType": "xsuaa"
+		}
+	]
+}

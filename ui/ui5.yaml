@@ -1,0 +1,33 @@
+specVersion: "2.4"
+metadata:
+  name: my.company.simmflocext
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - scp: true
+            path: /sap
+            url: http://saps4aas.anasnet.it:44300
+            client: '130'
+            destination: EAM_CONNECTION_CLONING
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: ""
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: my.company.simmflocext
+        ui5Theme: sap_fiori_3

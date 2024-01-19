@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog 
+        id="DialogChiudi"
+    > 
+			
+        <!-- 
+        <Button
+            id="Save"
+            text="Aggiungi"
+            type="Transparent"
+            press="OnCopia"
+        /> -->
+           <endButton>
+           <Button
+            id="Cancel"
+            text="Chiudi"
+            type="Transparent"
+            press="ChiudiFragment"
+        />
+           </endButton>
+	</Dialog> 
+</core:FragmentDefinition>

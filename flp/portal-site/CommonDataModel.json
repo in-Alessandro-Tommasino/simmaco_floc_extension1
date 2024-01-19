@@ -1,0 +1,380 @@
+{
+	"_version": "3.0.0",
+	"identification": {
+		"id": "6571d0a7-0cab-4bd1-a4b6-a9d9ca13d8b3-1525170977249",
+		"entityType": "bundle",
+		"title": "IAM FLP",
+		"description": "FLP For Intelligent Asset Management"
+	},
+	"payload": {
+		"catalogs": [{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "analytics",
+				"title": "{{analytics}}",
+				"entityType": "catalog",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"appId": "sap.iot.ain.personaldashboard",
+					"vizId": "aindashboard-display"
+				}, {
+					"appId": "com.sap.iot.ac.sac",
+					"vizId": "dashboards-display"
+				}]
+			}
+		}, {
+			"_version": "3.0.0",
+			"identification": {
+				"id": "administration",
+				"title": "{{administration}}",
+				"entityType": "catalog",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"appId": "sap.iot.ac.plugins",
+					"vizId": "Shell-plugin"
+				}, {
+					"appId": "sap.iot.ain.company_profile",
+					"vizId": "aincompanyprofile-display"
+				}, {
+					"appId": "sap.iot.ain.userauthorization",
+					"vizId": "userauthorization-display"
+				}, {
+					"appId": "sap.iot.ain.manageconfigurations",
+					"vizId": "ainconfiguration-display"
+				}, {
+					"appId": "sap.iot.ain.gdpr",
+					"vizId": "gdpr-display"
+				}, {
+					"appId": "sap.iot.ain.org-onboarding",
+					"vizId": "orgonboarding-display"
+				}, {
+					"appId": "com.sap.dsc.ac.apidashboard",
+					"vizId": "acapidashboard-display"
+				}, {
+					"appId": "sap.iot.ain.workflowconfiguration",
+					"vizId": "ainworkflowconfiguration-display"
+				}]
+			}
+		}, {
+			"_version": "3.0.0",
+			"identification": {
+				"id": "processes",
+				"title": "{{processes}}",
+				"entityType": "catalog",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"appId": "sap.iot.ain.performanceimprovement",
+					"vizId": "ainimprovementcases-display"
+				}, {
+					"appId": "sap.iot.ain.obsolescence",
+					"vizId": "ainobsolescence-display"
+				}, {
+					"appId": "sap.iot.ain.lookup",
+					"vizId": "ainlookup-display"
+				}, {
+					"appId": "sap.iot.ain.smartmatcher",
+					"vizId": "smartmatcher-display"
+				}, {
+					"appId": "sap.iot.ain.manageworkorders",
+					"vizId": "ainworkorders-display"
+				}, {
+					"appId": "sap.iot.ain.accn.managenotifications",
+					"vizId": "ainnotifications-display"
+				}]
+			}
+		}, {
+			"_version": "3.0.0",
+			"identification": {
+				"id": "masterdata",
+				"title": "{{masterdata}}",
+				"entityType": "catalog",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"appId": "sap.iot.ain.manageequipments",
+					"vizId": "ainequipment-display"
+				}, {
+					"appId": "com.sap.dsc.ac.equipmentsearch",
+					"vizId": "acequipmentsearch-display"
+				}, {
+					"appId": "com.sap.dsc.ac.equipmentsearchV2",
+					"vizId": "equipmentsearchV2-display"
+				}, {
+					"appId": "sap.iot.ain.managemodels",
+					"vizId": "ainmodels-display"
+				}, {
+					"appId": "sap.iot.ain.modelsearch",
+					"vizId": "modelsearch-display"
+				}, {
+					"appId": "sap.iot.ain.managefloc",
+					"vizId": "ainfloc-display"
+				}, {
+					"appId": "sap.iot.ain.functional_locations",
+					"vizId": "ainlocations-display"
+				}, {
+					"appId": "sap.iot.ain.managesystems",
+					"vizId": "ainsystems-display"
+				}, {
+					"appId": "sap.iot.ain.configure_category",
+					"vizId": "aintemplates-display"
+				}, {
+					"appId": "sap.iot.ain.failuremodes",
+					"vizId": "ainfailuremodes-display"
+				}, {
+					"appId": "sap.iot.ain.manageattachments",
+					"vizId": "aindocuments-display"
+				}, {
+					"appId": "sap.iot.ain.manageinstructions",
+					"vizId": "aininstructions-display"
+				}, {
+					"appId": "sap.iot.ain.manageannouncements",
+					"vizId": "ainannouncements-display"
+				}, {
+					"appId": "sap.iot.ain.groups",
+					"vizId": "aingroups-display"
+				}, {
+					"appId": "sap.iot.ain.functions",
+					"vizId": "ainfunctions-display"
+				}, {
+					"appId": "sap.iot.ain.managespareparts",
+					"vizId": "ainparts-display"
+				}, {
+					"appId": "com.sap.dsc.aas.ui.transformationConfigurationUI",
+					"vizId": "transformationconfiguration-display"
+				}, {
+					"appId": "com.sap.dsc.aas.ui.amlUploadAndTransformationUi",
+					"vizId": "amluploadandtransformation-display"
+				}]
+			}
+		}],
+		"groups": [{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "analytics",
+				"title": "{{analytics}}",
+				"entityType": "group",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"id": "sac-id",
+					"appId": "com.sap.iot.ac.sac",
+					"vizId": "dashboards-display"
+				}, {
+					"id": "personaldashboard-id",
+					"appId": "sap.iot.ain.personaldashboard",
+					"vizId": "aindashboard-display"
+				}]
+			}
+		}, {
+			"_version": "3.0.0",
+			"identification": {
+				"id": "processes",
+				"title": "{{processes}}",
+				"entityType": "group",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"id": "improvementcases-id",
+					"appId": "sap.iot.ain.performanceimprovement",
+					"vizId": "ainimprovementcases-display"
+				}, {
+					"id": "obsolescence-id",
+					"appId": "sap.iot.ain.obsolescence",
+					"vizId": "ainobsolescence-display"
+				}, {
+					"id": "lookup-id",
+					"appId": "sap.iot.ain.lookup",
+					"vizId": "ainlookup-display"
+				}, {
+					"id": "smartmatcher-id",
+					"appId": "sap.iot.ain.smartmatcher",
+					"vizId": "smartmatcher-display"
+				}, {
+					"id": "workorders-id",
+					"appId": "sap.iot.ain.manageworkorders",
+					"vizId": "ainworkorders-display"
+				}, {
+					"id": "notifications-id",
+					"appId": "sap.iot.ain.accn.managenotifications",
+					"vizId": "ainnotifications-display"
+				}]
+			}
+		}, {
+			"_version": "3.0.0",
+			"identification": {
+				"id": "masterdata",
+				"title": "{{masterdata}}",
+				"entityType": "group",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"id": "equipment-id",
+					"appId": "sap.iot.ain.manageequipments",
+					"vizId": "ainequipment-display"
+				}, {
+					"id": "equipmentsearchV2-id",
+					"appId": "com.sap.dsc.ac.equipmentsearchV2",
+					"vizId": "equipmentsearchV2-display"
+				}, {
+					"id": "models-id",
+					"appId": "sap.iot.ain.managemodels",
+					"vizId": "ainmodels-display"
+				}, {
+					"id": "modelsearch-id",
+					"appId": "sap.iot.ain.modelsearch",
+					"vizId": "modelsearch-display"
+				}, {
+					"id": "functionallocations-id",
+					"appId": "sap.iot.ain.managefloc",
+					"vizId": "ainfloc-display"
+				}, {
+					"id": "locations-id",
+					"appId": "sap.iot.ain.functional_locations",
+					"vizId": "ainlocations-display"
+				}, {
+					"id": "functions-id",
+					"appId": "sap.iot.ain.functions",
+					"vizId": "ainfunctions-display"
+				}, {
+					"id": "failuremodes-id",
+					"appId": "sap.iot.ain.failuremodes",
+					"vizId": "ainfailuremodes-display"
+				}, {
+					"id": "spareparts-id",
+					"appId": "sap.iot.ain.managespareparts",
+					"vizId": "ainparts-display"
+				}, {
+					"id": "groups-id",
+					"appId": "sap.iot.ain.groups",
+					"vizId": "aingroups-display"
+				}, {
+					"id": "systems-id",
+					"appId": "sap.iot.ain.managesystems",
+					"vizId": "ainsystems-display"
+				}, {
+					"id": "documents-id",
+					"appId": "sap.iot.ain.manageattachments",
+					"vizId": "aindocuments-display"
+				}, {
+					"id": "announcements-id",
+					"appId": "sap.iot.ain.manageannouncements",
+					"vizId": "ainannouncements-display"
+				}, {
+					"id": "instructions-id",
+					"appId": "sap.iot.ain.manageinstructions",
+					"vizId": "aininstructions-display"
+				}, {
+					"id": "templates-id",
+					"appId": "sap.iot.ain.configure_category",
+					"vizId": "aintemplates-display"
+				}, {
+					"id": "transformationconfiguration-id",
+					"appId": "com.sap.dsc.aas.ui.transformationConfigurationUI",
+					"vizId": "transformationconfiguration-display"
+				}, {
+					"id": "amluploadandtransformation-id",
+					"appId": "com.sap.dsc.aas.ui.amlUploadAndTransformationUi",
+					"vizId": "amluploadandtransformation-display"
+				}, {
+					"id": "my.company.simmflocext-17-1669365759186",
+					"appId": "my.company.simmflocext",
+					"vizId": "simmflocext-display"
+				}]
+			}
+		}, {
+			"_version": "3.0.0",
+			"identification": {
+				"id": "administration",
+				"title": "{{administration}}",
+				"entityType": "group",
+				"i18n": "i18n/i18n.properties"
+			},
+			"payload": {
+				"viz": [{
+					"id": "companyprofile-id",
+					"appId": "sap.iot.ain.company_profile",
+					"vizId": "aincompanyprofile-display"
+				}, {
+					"id": "appsettings-id",
+					"appId": "sap.iot.ain.manageconfigurations",
+					"vizId": "ainconfiguration-display"
+				}, {
+					"id": "userauthorization-id",
+					"appId": "sap.iot.ain.userauthorization",
+					"vizId": "userauthorization-display"
+				}, {
+					"id": "gdpr-id",
+					"appId": "sap.iot.ain.gdpr",
+					"vizId": "gdpr-display"
+				}, {
+					"id": "apidashboard-id",
+					"appId": "com.sap.dsc.ac.apidashboard",
+					"vizId": "acapidashboard-display"
+				}, {
+					"id": "iamworkflow-id",
+					"appId": "sap.iot.ain.workflowconfiguration",
+					"vizId": "ainworkflowconfiguration-display"
+				}]
+			}
+		}],
+		"sites": [{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "8957669e-7eed-4556-a348-2219268b6b02-1525170977249",
+				"entityType": "site",
+				"title": "SAP Fiori launchpad site on Cloud Foundry",
+				"description": "SAP Fiori launchpad site on Cloud Foundry, deployed from SAP Web IDE"
+			},
+			"payload": {
+				"config": {
+					"ushellConfig": {
+						"renderers": {
+							"fiori2": {
+								"componentData": {
+									"config": {
+										"enableRecentActivity": false,
+										"applications": {
+											"Shell-home": {}
+										}
+									}
+								}
+							}
+						}
+					},
+					"bootstrapPlugins": {
+						"KeyUserPlugin": {
+							"component": "sap..plugins.rta",
+							"oAuthScopes": ["$XSAPPNAME.KEYUSER"]
+						}
+					}
+				},
+				"sap.cloud.portal": {
+					"config": {
+						"theme.id": "sap_horizon",
+						"theme.active": ["sap_belize", "sap_belize_plus", "sap_belize_hcb", "sap_belize_hcw", "sap_fiori_3", "sap_horizon"],
+						"InAppHelp": {
+							"config": {
+								"enabled": true,
+								"productName": "SAP_ASSET_INTELLIGENCE_NETWORK",
+								"productVersion": "2209"
+							}
+						},
+						"ui5VersionNumber": "1.115.0",
+						"showSessionTimeoutDialog": true
+					}
+				},
+				"groupsOrder": ["analytics", "processes", "masterdata", "administration"]
+			}
+		}]
+	}
+}

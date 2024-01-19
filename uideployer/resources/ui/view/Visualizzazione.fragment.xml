@@ -1,0 +1,397 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:form="sap.ui.comp.smartform"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    displayBlock="true"
+    xmlns:table="sap.ui.table"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<VBox class="sapUiSmallMargin" height="100%">
+		<f:SimpleForm id="SimpleFormDisplay354"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Purchase Requisition"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" 
+			>
+			<f:content>
+				<Label text="ArchObjectNumber" />
+				<Text id="archObjectNumberDisplay" text="{ArchObjectNumber}" />
+				<Label text="NoteDescription" />
+				<Text text="{NoteDescription}" />
+				 <l:VerticalLayout
+                width="100%"
+                class="gridWrapper"
+				
+            >
+                <Title
+                        class="sapUiLargeMarginBegin"
+                        text="Dati non Lineari"
+                    />
+                <smartTable:SmartTable
+                    id="DatiNonLineari"
+                    entitySet="ZPMTDATASTAPPSet"
+                    smartFilterId="smartFilterBar"
+                    tableType="Table"
+                    
+                    useVariantManagement="true"
+                    useTablePersonalisation="true"
+                    showRowCount="true"
+                    persistencyKey="SmartTableAnalytical_Explored"
+                    enableAutoBinding="true"
+                    class="sapUiResponsiveContentPadding"
+                    
+                    editTogglable="true"
+                    app:useSmartToggle="true"
+                />
+
+
+
+                <!-- SETTORE UNO -->
+
+               
+                    <Title
+                        class="sapUiLargeMarginBegin"
+                        text="Dati lineari"
+                    />
+            
+                <l:Grid
+                    containerQuery="true"
+                    position="Center"
+                    width="94%"
+                    defaultSpan="XL6 L6 M6"
+                    class="sapUiLargeMarginTop"
+                >
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Modello di riferimento lineare:"
+                            labelFor="modRifLin"
+                        />
+                        <Input
+                            id="modRifLin"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            showValueHelp="true"
+                            valueHelpOnly="true"
+                            valueHelpRequest=".handlemodRifLin"
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                            suggestionItems="{Ztendopera}"
+                        >
+                            <suggestionItems>
+                                <core:Item text="{Ztendopera}" />
+                            </suggestionItems>
+                        </Input>
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label text="" />
+                    </FlexBox>
+
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Punto iniziale:"
+                            labelFor="pIniz"
+                        />
+                        <Input
+                            id="pIniz"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Punto finale:"
+                            labelFor="pFin"
+                        />
+                        <Input
+                            id="pFin"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Lunghezza:"
+                            labelFor="lung"
+                        />
+                        <Input
+                            id="lung"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Unità di misura:"
+                            labelFor="um"
+                        />
+                        <Input
+                            id="um"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Marcatore iniziale:"
+                            labelFor="marIniziale"
+                        />
+                        <Input
+                            id="marIniziale"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Marcatore finale:"
+                            labelFor="marFinale"
+                        />
+                        <Input
+                            id="marFinale"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Latitudine iniziale:"
+                            labelFor="latIniziale"
+                        />
+                        <Input
+                            id="latIniziale"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Latitudine finale:"
+                            labelFor="latFinale"
+                        />
+                        <Input
+                            id="latFinale"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Longitudine iniziale:"
+                            labelFor="lonIniziale"
+                        />
+                        <Input
+                            id="lonIniziale"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Label
+                            text="Longitudine finale:"
+                            labelFor="lonFinale"
+                        />
+                        <Input
+                            id="lonFinale"
+                            type="Text"
+                            value=""
+                            placeholder=""
+                            width="15rem"
+                            class="sapUiSmallMarginBottom"
+                        />
+                    </FlexBox>
+                </l:Grid>
+            </l:VerticalLayout>
+
+			 <VBox>
+                <Panel headerText="Tratte">
+                    <FlexBox renderType="Div" />
+                </Panel>
+                <smartTable:SmartTable
+                    id="LineItemsSmartTable"
+                    entitySet="ZPMTMENUSTAPPSet"
+                    smartFilterId="smartFilterBar"
+                    tableType="Table"
+                    
+                    useVariantManagement="true"
+                    useTablePersonalisation="true"
+                    showRowCount="true"
+                    persistencyKey="SmartTableAnalytical_Explored"
+                    enableAutoBinding="true"
+                    class="sapUiResponsiveContentPadding"
+                    
+                    editTogglable="true"
+                    app:useSmartToggle="true"
+                />
+                <Panel headerText="Centri Abitati">
+                    <FlexBox renderType="Div">
+                        <smartTable:SmartTable
+                            id="SmartTables2"
+                            entitySet="ZPMTDATASTAPPSet"
+                            smartFilterId="smartFilterBar"
+                            tableType="ResponsiveTable"
+                            
+                            useVariantManagement="false"
+                            useTablePersonalisation="true"
+                            showRowCount="true"
+                            enableAutoBinding="true"
+                            demandPopin="true"
+                            class="sapUiResponsiveContentPadding"
+                            
+                            editTogglable="true"
+                        />
+                    </FlexBox>
+                </Panel>
+                <Panel headerText="KI">
+                    <FlexBox renderType="Div">
+                        <smartTable:SmartTable
+                            id="SmartTables6"
+                            entitySet="ZPMTDATASTAPPSet"
+                            smartFilterId="smartFilterBar"
+                            tableType="ResponsiveTable"
+                           
+                            useVariantManagement="false"
+                            useTablePersonalisation="true"
+                            showRowCount="true"
+                            enableAutoBinding="true"
+                            demandPopin="true"
+                            class="sapUiResponsiveContentPadding"
+                            
+                            editTogglable="true"
+                        />
+                    </FlexBox>
+                </Panel>
+                <Panel headerText="CTF">
+                    <FlexBox renderType="Div">
+                        <smartTable:SmartTable
+                            id="SmartTables3"
+                            entitySet="ZPMTDATASTAPPSet"
+                            smartFilterId="smartFilterBar"
+                            tableType="ResponsiveTable"
+                           
+                            useVariantManagement="false"
+                            useTablePersonalisation="true"
+                            showRowCount="true"
+                            enableAutoBinding="true"
+                            demandPopin="true"
+                            class="sapUiResponsiveContentPadding"
+                            
+                            editTogglable="true"
+                        />
+                    </FlexBox>
+                </Panel>
+               
+            </VBox>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

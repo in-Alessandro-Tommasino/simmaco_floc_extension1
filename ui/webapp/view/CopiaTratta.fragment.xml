@@ -1,0 +1,195 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog id="DialogChiudi1">
+        <l:VerticalLayout
+            width="100%"
+            class="gridWrapper"
+        >
+            <!-- SETTORE UNO -->
+            <Title
+                class="sapUiLargeMarginBegin"
+                text="Copia Tratta"
+            />
+            <l:Grid
+                containerQuery="true"
+                position="Center"
+                width="94%"
+                defaultSpan="XL6 L6 M6"
+                class="sapUiLargeMarginTop"
+            >
+                <FlexBox
+                    height="30px"
+                    width="90%"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                    visible="{
+                            parts:[
+                            {path:'ModelloFragment>/DataSpecific/Category'},
+                            {path:'ModelloFragment>/DataGeneral/Manserno'}
+                            ],
+                            formatter: '.is_strada_visible'
+                        }"
+                >
+                    <Label
+                        text="Strada"
+                        visible="{
+                            parts:[
+                            {path:'ModelloFragment>/DataSpecific/Category'},
+                            {path:'ModelloFragment>/DataGeneral/Manserno'}
+                            ],
+                            formatter: '.is_strada_visible'
+                        }"
+                    />
+                    <Input
+                        visible="{
+                            parts:[
+                            {path:'ModelloFragment>/DataSpecific/Category'},
+                            {path:'ModelloFragment>/DataGeneral/Manserno'}
+                            ],
+                            formatter: '.is_strada_visible'
+                        }"
+                        value="{InputModel>/strada}"
+                        showValueHelp="true"
+                        valueHelpOnly="true"
+                        valueHelpRequest="on_value_help_strada"
+                        editable="true"
+                        placeholder=""
+                        width="15rem"
+                        class="sapUiSmallMarginBottom"
+                    />
+                </FlexBox>
+                <FlexBox
+                    height="30px"
+                    width="90%"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                >
+                    <layoutData>
+                        <l:GridData linebreak="true" />
+                    </layoutData>
+                    <Label
+                        text="Progressiva iniziale:"
+                        labelFor="pInizaleCopy1"
+                    />
+                    <Input
+                        id="pInizaleCopy1"
+                        value="{
+                            path:'InputModel>/StartPoint',
+                            type:'sap.ui.model.type.Float',
+                            formatOptions:{
+                                minFractionDigits: 3,
+                                maxFractionDigits: 3
+                            }
+                        }"
+                        editable="true"
+                        placeholder=""
+                        width="15rem"
+                        class="sapUiSmallMarginBottom"
+                    />
+                </FlexBox>
+                <FlexBox
+                    height="30px"
+                    width="90%"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                >
+                    <Label
+                        text="Progressiva finale:"
+                        labelFor="pFinaleCopy1"
+                    />
+                    <Input
+                        id="pFinaleCopy1"
+                        value="{
+                            path:'InputModel>/EndPoint',
+                            type:'sap.ui.model.type.Float',
+                            formatOptions:{
+                                minFractionDigits: 3,
+                                maxFractionDigits: 3
+                            }
+                        }"
+                        editable="true"
+                        placeholder=""
+                        width="15rem"
+                        class="sapUiSmallMarginBottom"
+                    />
+                </FlexBox>
+                <FlexBox
+                    height="30px"
+                    width="90%"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                >
+                    <Label
+                        text="Lunghezza nominale:"
+                        labelFor="LunghezzaCopy1"
+                    />
+                    <Input
+                        id="LunghezzaCopy1"
+                        value="{
+                            parts:[
+                                {
+                                path:'InputModel>/StartPoint',
+                                type:'sap.ui.model.type.Float',
+                                formatOptions:{
+                                    minFractionDigits: 3,
+                                    maxFractionDigits: 3
+                                    }
+                                },
+                                {
+                                path:'InputModel>/EndPoint',
+                                type:'sap.ui.model.type.Float',
+                                formatOptions:{
+                                    minFractionDigits: 3,
+                                    maxFractionDigits: 3
+                                    }
+                                }
+                            ],
+                            formatter:'.get_length'
+                         
+                        }"
+                        editable="false"
+                        placeholder=""
+                        width="15rem"
+                        class="sapUiSmallMarginBottom"
+                    />
+                </FlexBox>
+                <FlexBox
+                    height="30px"
+                    width="90%"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                >
+                    <Label
+                        text="Unità di misura:"
+                        labelFor="um1"
+                    />
+                    <Input
+                        id="um1"
+                        submit="formatUnit"
+                        type="Text"
+                        value="{InputModel>/LinearUnit}"
+                        editable="true"
+                        placeholder=""
+                        width="15rem"
+                        class="sapUiSmallMarginBottom"
+                    />
+                </FlexBox>
+            </l:Grid>
+        </l:VerticalLayout>
+        <Button
+            id="Cancel1"
+            text="Chiudi"
+            type="Transparent"
+            press="ChiudiFragment"
+        />
+        <Button
+            id="Save1"
+            text="Aggiungi"
+            type="Transparent"
+            press="OnCopia"
+        />
+    </Dialog>
+</core:FragmentDefinition>

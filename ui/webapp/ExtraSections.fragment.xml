@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:nb="my.company.simmflocext.view.blocks"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:form="sap.ui.comp.smartform"
+>
+    <ObjectPageSection title="Caratteristiche Lineari">
+        <subSections>
+            <ObjectPageSubSection>
+                <blocks>
+                     <nb:Flow>
+					</nb:Flow> 
+                </blocks>
+            </ObjectPageSubSection>
+        </subSections>
+    </ObjectPageSection>
+</core:FragmentDefinition>

@@ -1,0 +1,33 @@
+<!--  <core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <SelectDialog title="{stepModel>/value_help/name}" contentHeight="75%" contentWidth="75%" items="{stepModel>/value_help/items}" confirm="onValueHelpConfirm">
+        <StandardListItem title="{stepModel>title}" />
+    </SelectDialog>
+</core:FragmentDefinition>  -->
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog 
+        title="{stepModel>/value_help/name}" 
+        contentHeight="75%" 
+        contentWidth="75%" >
+        <content>
+            <!-- Barra di ricerca -->
+            <SearchField width="100%" search="onSearch" placeholder="Cerca..."/>
+            
+            <!-- La tua lista -->
+            <List items="{stepModel>/value_help/items}" itemPress="onValueHelpConfirm" growing="true" growingThreshold="1000">
+                <StandardListItem title="{stepModel>title}" type="Active" />
+            </List>
+        </content>
+        <buttons>
+            <Button text="Chiudi" press=".ChiudiFragment"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

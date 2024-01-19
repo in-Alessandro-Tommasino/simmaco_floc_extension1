@@ -1,0 +1,24 @@
+{
+	"authenticationMethod": "none",
+	"routes": [{
+		"source": "^/sap/(.*)$",
+		"target": "/sap/$1",
+		"destination": "EAM_CONNECTION_CLONING",
+		"authenticationType": "xsuaa",
+		"csrfProtection": false
+	},{
+		"csrfProtection": false,
+		"source": "^/ain/(.*)$",
+		"target": "/ain/$1",
+		"service": "com.sap.dsc.iam.assetcentral",
+		"endpoint": "asset-central-service",
+		"authenticationType": "xsuaa"
+	}, {
+		"csrfProtection": false,
+		"source": "^/aspm/(.*)$",
+		"target": "/ain/$1",
+		"service": "com.sap.dsc.iam.assetcentral",
+		"endpoint": "asset-central-service",
+		"authenticationType": "xsuaa"
+	}]
+}

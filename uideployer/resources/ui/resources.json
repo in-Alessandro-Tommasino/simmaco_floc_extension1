@@ -1,0 +1,83 @@
+{
+    "resources": [
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "ExtraSections.fragment.xml"
+        },
+        {
+            "name": "controller/Flow.controller.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "fioriHtmlRunner.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "libs/lodash.js"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "test/flpSandbox.html"
+        },
+        {
+            "name": "utils/locate-reuse-libs.js"
+        },
+        {
+            "name": "view/Change.fragment.xml"
+        },
+        {
+            "name": "view/CopiaTratta.fragment.xml"
+        },
+        {
+            "name": "view/Create.fragment.xml"
+        },
+        {
+            "name": "view/Display.fragment.xml"
+        },
+        {
+            "name": "view/Flow.view.xml"
+        },
+        {
+            "name": "view/TextAreaNote.fragment.xml"
+        },
+        {
+            "name": "view/blocks/Flow.js"
+        },
+        {
+            "name": "view/fragment/CapisaldiDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragment/CapisaldiDialog.js"
+        },
+        {
+            "name": "view/fragment/PlantPlantDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragment/PlantPlantDialog.js"
+        },
+        {
+            "name": "view/fragment/char_value_help.fragment.xml"
+        },
+        {
+            "name": "view/fragment/value_help_strada.fragment.xml"
+        }
+    ]
+}

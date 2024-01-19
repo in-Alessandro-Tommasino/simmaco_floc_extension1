@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    controllerName="my.company.simmflocext.view.fragment.PlantPlantDialog"
+    xmlns:core="sap.ui.core">
+    <Dialog id="CapisaldiDialog" title="Note" >
+      
+    	
+		<TextArea id="NoteArea" value="{ModelloFragment>/DataGeneral/capisaldi}" maxLength="2510"  rows="10" placeholder="Enter Text"  width="118rem" height="15rem" editable="{= !(${ModelloFragment>/DataGeneral/Abcindic} === '' || ${ModelloFragment>/DataGeneral/Abcindic} === 'C') }"/>
+         <beginButton>
+        <Button id="CapisaldiDialogButton" text="Chiudi" press=".onDialogClose"/>
+        </beginButton> 
+    </Dialog>
+</core:FragmentDefinition>

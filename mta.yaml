@@ -1,0 +1,89 @@
+ID: mta_simmflocext
+_schema-version: '2.1'
+parameters:
+  deploy_mode: html5-repo
+version: 0.0.1
+modules:
+  - name: simmflocext-approuter
+    type: approuter.nodejs
+    path: approuter
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: simmflocext-flp-portal
+      - name: simmflocext-repo-rt
+      - name: simmflocext-uaa
+      - name: simmflocext-acs
+      - name: simmflocext-dest
+      - name: simmflocext-conn
+  - name: simmflocext-uideployer
+    type: com.sap.html5.application-content
+    path: uideployer
+    requires:
+      - name: simmflocext-repo-dt
+    build-parameters:
+      requires:
+        - name: simmflocext
+          artifacts:
+            - './*'
+          target-path: resources/ui
+  - name: simmflocext
+    type: html5
+    path: ui
+    build-parameters:
+      builder: grunt
+      supported-platforms: []
+      build-result: dist
+  - name: simmflocext-flp
+    type: com.sap.application.portal.content
+    path: flp
+    requires:
+      - name: simmflocext-repo-rt
+      - name: simmflocext-flp-portal
+        parameters:
+          service-key:
+            name: content-deploy-key
+            config:
+              content-endpoint: developer
+          content-target: true
+      - name: simmflocext-acs
+      - name: simmflocext-uaa
+      - name: simmflocext-repo-dt
+resources:
+  - name: simmflocext-flp-portal
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: standard
+      service: portal
+  - name: simmflocext-repo-dt
+    parameters:
+      service-plan: app-host
+      service: html5-apps-repo
+    type: org.cloudfoundry.managed-service
+  - name: simmflocext-repo-rt
+    parameters:
+      service-plan: app-runtime
+      service: html5-apps-repo
+    type: org.cloudfoundry.managed-service
+  - name: simmflocext-uaa
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: simmflocext-acs
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: asset-central-preview
+      service-plan: standard
+  - name: simmflocext-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+  - name: simmflocext-conn
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
