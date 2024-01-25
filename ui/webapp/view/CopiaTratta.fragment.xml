@@ -85,6 +85,7 @@
                             }
                         }"
                         editable="true"
+                        change="FormatRight"
                         placeholder=""
                         width="15rem"
                         class="sapUiSmallMarginBottom"
@@ -111,6 +112,7 @@
                             }
                         }"
                         editable="true"
+                        change="FormatRight"
                         placeholder=""
                         width="15rem"
                         class="sapUiSmallMarginBottom"

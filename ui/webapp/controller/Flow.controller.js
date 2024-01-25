@@ -411,11 +411,11 @@ sap.ui.define([
 			});
 		},
 		float_to_sap_string: function (f_value) {
-			let s_value = f_value.toString();
+			let s_value = f_value
 			// Aggiungi una virgola come separatore delle migliaia
-			s_value = s_value.replace(/\B(?=(\d{3})+(?!\d))/g, '');
+			s_value = s_value.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 			// Aggiungi tre zeri dopo la virgola per rappresentare i decimali
-			s_value += ',000';
+			s_value.replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
 			return s_value
 		},
 		onCloseControlloTratte: function (oEvent) {
@@ -438,11 +438,6 @@ sap.ui.define([
 			const manserno = modello_fragment.getProperty("/DataGeneral/Manserno");
 			const IWERK = modello_input.getProperty("/DataGeneral/Planplant")
 			const Strada =  input_model.getProperty("/strada")
-			// const filters = [
-			//     new sap.ui.model.Filter("StartPoint", sap.ui.model.FilterOperator.EQ, start_point),
-			//     new sap.ui.model.Filter("EndPoint", sap.ui.model.FilterOperator.EQ, end_point),
-			//     new sap.ui.model.Filter("ExternalNumber", sap.ui.model.FilterOperator.EQ, inputModel.ExternalNumber),
-			// ]
 			if (category === "O" && (manserno === "1" || manserno === 1) && (inputModel.strada === "" || inputModel.strada === undefined || inputModel.strada === null)) {
 				sap.m.MessageBox.error("Valorizzare il campo Strada.");
 				return;
@@ -738,10 +733,10 @@ sap.ui.define([
 			const main_tab = this.getView().byId("TabellaPrincipale")
 			main_tab.unbindColumns();
 			main_tab.unbindRows();
-			window.bottonesalva = this.getView().byId("Salva")
-			if (window.bottonesalva.getEnabled() === false) {
-				window.bottonesalva.setEnabled(true)
-			}
+			// window.bottonesalva = this.getView().byId("Salva")
+			// if (window.bottonesalva.getEnabled() === false) {
+			// 	window.bottonesalva.setEnabled(true)
+			// }
 			const stepModel = this.getView().getModel("stepModel")
 			const tempCheck = stepModel.getProperty("/tempCheck")
 
@@ -765,8 +760,8 @@ sap.ui.define([
 					sorter: { path: 'StartPoint', descending: false },
 					model: "stepModel"
 				});
-
-				return;
+				var aStepModelValues = searched_value.values
+				this.disableAddAndRemove(aStepModelValues)
 			}
 
 
@@ -1823,19 +1818,22 @@ sap.ui.define([
 				// Remove excess digits if length exceeds 3
 				return item.slice(0, 3);
 			});
-			let JoinNumber =  resultArray.join("")
+			let JoinNumber = resultArray.join("")
 			if (Number(JoinNumber <= 999)) {
-				let FormattedNumber =  parseFloat(JoinNumber).toLocaleString('en-US')
-				if (sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/StartPoint" || sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/EndPoint" ) {
+				let FormattedNumber = parseFloat(JoinNumber).toLocaleString('en-US')
+				if (sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/StartPoint" || sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/EndPoint") {
 					sap.ui.getCore().byId(id).setValue(FormattedNumber)
-				} 
+				}
 			} else {
-			
-				
+				let num = parseInt(resultArray.join("")).toLocaleString("de-DE", { minimumFractionDigits: 0, maximumFractionDigits: 3 })
+				let lastIndex = num.lastIndexOf('.');
+				let FormattedNumber=  num.substring(0, lastIndex) + ',' + num.substring(lastIndex + 1);
+				if (sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/StartPoint" || sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/EndPoint") {
+					sap.ui.getCore().byId(id).setValue(FormattedNumber)
+				}
 			}
-			
-		},
 
+		},
 
 		string_to_float: function (s_value) {
 			try {
@@ -1845,13 +1843,19 @@ sap.ui.define([
 				sap.m.MessageBox.error(error.message)
 			}
 		},
+	  
 		float_to_string: function (f_value) {
-			let s_value = f_value.toString();
-			// Aggiungi una virgola come separatore delle migliaia
-			s_value = s_value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-			// Aggiungi tre zeri dopo la virgola per rappresentare i decimali
-			s_value += ',000';
-			return s_value
+			let s_value = String(f_value);
+		
+			if (s_value.length > 7) {
+				s_value = parseFloat(s_value).toFixed(3);
+				s_value = s_value.replace(".", ",");
+				return s_value;
+			} else {
+				// Format as thousands separator and three zeros after the decimal point
+				s_value = parseFloat(s_value).toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+				return s_value;
+			}
 		},
 		///COpia tratta per classe TRATTA + CARATTERISTICHE
 		 ///COpia tratta per classe TRATTA + CARATTERISTICHE
@@ -1928,13 +1932,7 @@ sap.ui.define([
 						LinearUnit: LinearUnit,
 						ClassNumber: stepModel.oData.filters.class.key
 					}
-					if (category === "O" && (manserno === "1" || manserno === 1)) {
-						if (controller.class_name.key === "Z_OPERE_LAM")
-							new_value["Z_STRADA1_SU_OPERA"] = strada;
-						if (controller.class_name.key === "Z_SOVRAPPASSI")
-							new_value["Z_STRADA"] = strada;
-					}
-
+					
 					let se_value_set = []
 
 					for (const c of charactheristics) {
@@ -1967,6 +1965,13 @@ sap.ui.define([
 							results: se_value_set
 						}
 					})
+					
+					if (category === "O" && (manserno === "1" || manserno === 1)) {
+						if (controller.class_name.key === "Z_OPERE_LAM")
+							new_value["Z_STRADA1_SU_OPERA"] = strada;
+						if (controller.class_name.key === "Z_SOVRAPPASSI")
+							new_value["Z_STRADA"] = strada;
+					}
 
 					values.push(new_value)
 
