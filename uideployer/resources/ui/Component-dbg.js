@@ -12,6 +12,8 @@ this.sap.iot.ain.managefloc.Component.extend("my.company.simmflocext.Component",
 	metadata: {
 		manifest: "json"
 	},
+
+
 	init: function () {
 		sap.iot.ain.managefloc.Component.prototype.init.apply(this, arguments);
 		var sPath = jQuery.sap.getModulePath("my.company.simmflocext");
@@ -20,7 +22,8 @@ this.sap.iot.ain.managefloc.Component.extend("my.company.simmflocext.Component",
 		});
 
 		var sRootPath = jQuery.sap.getModulePath("my.company.simmflocext");
-
+		 
+		
 		jQuery.getScript(sRootPath + "/libs/lodash.js");
 
 		this.setModel(new sap.ui.model.json.JSONModel({
@@ -66,7 +69,8 @@ this.sap.iot.ain.managefloc.Component.extend("my.company.simmflocext.Component",
 		this.setModel(new sap.ui.model.json.JSONModel({
 			"TableVisibility": false
 		}), "FlowModel");
-	
+		
+		
 
 
 		this.setModel(new sap.ui.model.json.JSONModel({

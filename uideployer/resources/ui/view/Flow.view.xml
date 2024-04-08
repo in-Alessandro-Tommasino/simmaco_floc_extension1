@@ -9,500 +9,515 @@
     xmlns:form="sap.ui.comp.smartform"
     xmlns:table="sap.ui.table"
 >
-    <Page
-        id="page"
-        showHeader="false"
-    >
-        <ScrollContainer vertical="true">
-            <!-- <l:VerticalLayout
-            width="100%"
-            class="gridWrapper"
-            > -->
-            <!-- SETTORE UNO -->
-            <l:Grid
-                containerQuery="true"
-                position="Center"
-                width="94%"
-                defaultSpan="XL6 L6 M6"
-                class="sapUiLargeMarginTop"
-            >
-                <FlexBox
-                    height="30px"
-                    width="90%"
-                    alignItems="Center"
-                    justifyContent="SpaceBetween"
+    <Page id="page">
+        <content>
+            <ScrollContainer vertical="true">
+                <!-- <l:VerticalLayout
+                width="100%"
+                class="gridWrapper"
+                > -->
+                <!-- SETTORE UNO -->
+                <l:Grid
+                    containerQuery="true"
+                    position="Center"
+                    width="94%"
+                    defaultSpan="XL6 L6 M6"
+                    class="sapUiLargeMarginTop"
                 >
-                    <Label
-                        text="Descrizione:"
-                        labelFor="Descrizione"
-                        class="sapUiTinyMarginTop"
-                    />
-                    <Input
-                        id="Descrizione"
-                        value="{ModelloInput>/DataGeneral/testo}"
-                        width="30rem"
-                    />
-                </FlexBox>
-                <FlexBox
-                    height="30px"
-                    width="90%"
-                    alignItems="Center"
-                    justifyContent="SpaceBetween"
-                >
-                <Button
-                    visible="{= ${ModelloFragment>/DataSpecific/Category} === 'S' || ${ModelloFragment>/DataSpecific/Category} === 'O' || ${ModelloFragment>/DataGeneral/Manserno} === '1'}"
-                    id="Button-Capisaldi"
-                    text="Note"
-                    press=".onOpenCapisaldiDialog"
-                />
-                </FlexBox>
-            </l:Grid>
-            <Panel
-                expandable="true"
-                headerText="Localizzazione"
-                width="auto"
-                class="sapUiResponsiveMargin"
-            >
-                <content>
-                    <l:Grid
-                        containerQuery="true"
-                        position="Center"
-                        width="94%"
-                        defaultSpan="XL6 L6 M6"
-                        class="sapUiLargeMarginTop"
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
                     >
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
+                        <Label
+                            text="Descrizione:"
+                            labelFor="Descrizione"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="Descrizione"
+                            value="{ModelloInput>/DataGeneral/testo}"
+                            width="30rem"
+                        />
+                    </FlexBox>
+                    <FlexBox
+                        height="30px"
+                        width="90%"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                    >
+                        <Button
+                            visible="{= ${ModelloFragment>/DataSpecific/Category} === 'S' || ${ModelloFragment>/DataSpecific/Category} === 'O' || ${ModelloFragment>/DataGeneral/Manserno} === '1'}"
+                            id="Button-Capisaldi"
+                            text="Note"
+                            press=".onOpenCapisaldiDialog"
+                        />
+                    </FlexBox>
+                </l:Grid>
+                <Panel
+                    expandable="true"
+                    headerText="Coordinate"
+                    width="auto"
+                    class="sapUiResponsiveMargin"
+                >
+                    <content>
+                        <l:Grid
+                            containerQuery="true"
+                            position="Center"
+                            width="94%"
+                            defaultSpan="XL6 L6 M6"
+                            class="sapUiLargeMarginTop"
                         >
-                            <Label
-                                text="Divisione di pianificazione:"
-                                labelFor="inputPlanplant"
-                                class="sapUiTinyMarginTop"
-                                visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
-                            />
                             <FlexBox
                                 height="30px"
                                 width="90%"
                                 alignItems="Center"
-                                justifyContent="End"
+                                justifyContent="SpaceBetween"
                             >
+                                <Label
+                                    text="Divisione di pianificazione:"
+                                    labelFor="inputPlanplant"
+                                    class="sapUiTinyMarginTop"
+                                    visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
+                                />
+                                <FlexBox
+                                    height="30px"
+                                    width="90%"
+                                    alignItems="Center"
+                                    justifyContent="End"
+                                >
+                                    <Input
+                                        id="inputPlanplant"
+                                        value="{stepModel>/data/DataGeneral/Planplant}"
+                                        textAlign="Center"
+                                        showValueHelp="true"
+                                        valueHelpOnly="true"
+                                        width="6rem"
+                                        valueHelpRequest=".onOpenPlantPlantDialog"
+                                        visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Input
+                                        id="descrPlantPlant"
+                                        type="Text"
+                                        value="{stepModel>/data/DataGeneral/descrdiv}"
+                                        editable="false"
+                                        textAlign="Center"
+                                        width="15rem"
+                                        class="sapUiTinyMarginStart"
+                                        visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
+                                    />
+                                </FlexBox>
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                                visible="false"
+                            >
+                                <Label
+                                    text="Modello di riferimento lineare:"
+                                    labelFor="modRifLin"
+                                />
                                 <Input
-                                    id="inputPlanplant"
-                                    value="{stepModel>/data/DataGeneral/Planplant}"
-                                    textAlign="Center"
+                                    id="modRifLin"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/LinearReferencePattern}"
+                                    placeholder="display"
                                     showValueHelp="true"
                                     valueHelpOnly="true"
-                                    width="6rem"
-                                    valueHelpRequest=".onOpenPlantPlantDialog"
-                                    editable="{= !(${ModelloFragment>/DataGeneral/Abcindic} === '' || ${ModelloFragment>/DataGeneral/Abcindic} === 'C') }"
+                                    textAlign="Center"
+                                    valueHelpRequest=".handlemodRifLin2"
+                                    width="15rem"
+                                    editable="false"
+                                    class="sapUiSmallMarginBottom"
+                                    suggestionItems="{Ztendopera}"
+                                >
+                                    <suggestionItems>
+                                        <core:Item text="{Ztendopera}" />
+                                    </suggestionItems>
+                                </Input>
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                                visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
+                            >
+                                <Label
+                                    text="Strada:"
+                                    labelFor="Strada"
                                     visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
-                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Input
-                                    id="descrPlantPlant"
+                                    id="Strada"
                                     type="Text"
-                                    value="{stepModel>/data/DataGeneral/descrdiv}"
-                                    editable="false"
+                                    value="{ModelloInput>/DataGeneral/Strada}"
+                                    placeholder=""
+                                    visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
                                     textAlign="Center"
                                     width="15rem"
-                                    class="sapUiTinyMarginStart"
-                                    visible="{= ${ModelloFragment>/DataSpecific/Category} === 'O' }"
+                                    editable="false"
+                                    class="sapUiSmallMarginBottom"
                                 />
                             </FlexBox>
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                            visible="false"
-                        >
-                            <Label
-                                text="Modello di riferimento lineare:"
-                                labelFor="modRifLin"
-                            />
-                            <Input
-                                id="modRifLin"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/LinearReferencePattern}"
-                                placeholder="display"
-                                showValueHelp="true"
-                                valueHelpOnly="true"
-                                textAlign="Center"
-                                valueHelpRequest=".handlemodRifLin2"
-                                width="15rem"
-                                editable="false"
-                                class="sapUiSmallMarginBottom"
-                                suggestionItems="{Ztendopera}"
+
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
                             >
-                                <suggestionItems>
-                                    <core:Item text="{Ztendopera}" />
-                                </suggestionItems>
-                            </Input>
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="70%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
+                                <layoutData>
+                                    <l:GridData linebreak="true" />
+                                </layoutData>
+                                <Label
+                                    text="Progressiva iniziale:"
+                                    labelFor="pIniz"
+                                />
+                                <Input
+                                    id="pIniz"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/StartPoint}"
+                                    editable="true"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    change="formatTextIni"
+                                    liveChange="CalcoloLunghezzaMain"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Progressiva finale:"
+                                    labelFor="pFin"
+                                />
+                                <Input
+                                    id="pFin"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/EndPoint}"
+                                    editable="true"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    change="formatTextFin"
+                                    liveChange="CalcoloLunghezzaMain"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Lunghezza nominale:"
+                                    labelFor="lung"
+                                />
+                                <Input
+                                    id="lung"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/LinearLength}"
+                                    editable="false"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Unità di misura:"
+                                    labelFor="um"
+                                />
+                                <Input
+                                    id="um"
+                                    type="Text"
+                                    value="{path:'ModelloInput>/DataGeneral/LinearUnit', formatter: '.formatter.linear_unit'}"
+                                    editable="false"
+                                    textAlign="Center"
+                                    placeholder=""
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                                visible="false"
+                            >
+                                <Label
+                                    text="Marcatore iniziale:"
+                                    labelFor="marIniziale"
+                                />
+                                <Input
+                                    id="marIniziale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/MarkerStartPoint}"
+                                    editable="true"
+                                    textAlign="Center"
+                                    placeholder=""
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                                visible="false"
+                            >
+                                <Label
+                                    text="Marcatore finale:"
+                                    labelFor="marFinale"
+                                />
+                                <Input
+                                    id="marFinale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/MarkerEndPoint}"
+                                    editable="true"
+                                    textAlign="Center"
+                                    placeholder=""
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                        </l:Grid>
+                        <l:Grid
+                            containerQuery="true"
+                            position="Center"
+                            width="94%"
+                            defaultSpan="XL4 L4 M4"
                         >
-                            <Label />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Latitudine iniziale:"
+                                    labelFor="latIniziale"
+                                />
+                                <Input
+                                    id="latIniziale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/Zzlatitude_start}"
+                                    editable="true"
+                                    textAlign="Center"
+                                    placeholder=""
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Latitudine finale:"
+                                    labelFor="latFinale"
+                                />
+                                <Input
+                                    id="latFinale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/Zzlatitude_end}"
+                                    editable="true"
+                                    textAlign="Center"
+                                    placeholder=""
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Latitudine centrale:"
+                                    labelFor="latCentrale"
+                                />
+                                <Input
+                                    id="latCentrale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/ZZLATITUDE_CEN}"
+                                    textAlign="Center"
+                                    placeholder=""
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                        </l:Grid>
+                        <l:Grid
+                            containerQuery="true"
+                            position="Center"
+                            width="94%"
+                            defaultSpan="XL4 L4 M4"
                         >
-                            <Label
-                                text="Progressiva iniziale:"
-                                labelFor="pIniz"
-                            />
-                            <Input
-                                id="pIniz"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/StartPoint}"
-                                editable="true"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                change="formatTextIni"
-                                liveChange="CalcoloLunghezzaMain"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Longitudine iniziale:"
+                                    labelFor="lonIniziale"
+                                />
+                                <Input
+                                    id="lonIniziale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/Zzlongitude_start}"
+                                    editable="true"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Longitudine finale:"
+                                    labelFor="lonFinale"
+                                />
+                                <Input
+                                    id="lonFinale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/Zzlongitude_end}"
+                                    editable="true"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Longitudine centrale:"
+                                    labelFor="lonCentrale"
+                                />
+                                <Input
+                                    id="lonCentrale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/ZZLONGITUDE_CEN}"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                        </l:Grid>
+                        <l:Grid
+                            containerQuery="true"
+                            position="Center"
+                            width="94%"
+                            defaultSpan="XL4 L4 M4"
                         >
-                            <Label
-                                text="Progressiva finale:"
-                                labelFor="pFin"
-                            />
-                            <Input
-                                id="pFin"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/EndPoint}"
-                                editable="true"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                change="formatTextFin"
-                                liveChange="CalcoloLunghezzaMain"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Lunghezza nominale:"
-                                labelFor="lung"
-                            />
-                            <Input
-                                id="lung"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/LinearLength}"
-                                editable="false"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Unità di misura:"
-                                labelFor="um"
-                            />
-                            <Input
-                                id="um"
-                                type="Text"
-                                value="{path:'ModelloInput>/DataGeneral/LinearUnit', formatter: '.formatter.linear_unit'}"
-                                editable="false"
-                                textAlign="Center"
-                                placeholder=""
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                            visible="false"
-                        >
-                            <Label
-                                text="Marcatore iniziale:"
-                                labelFor="marIniziale"
-                            />
-                            <Input
-                                id="marIniziale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/MarkerStartPoint}"
-                                editable="true"
-                                textAlign="Center"
-                                placeholder=""
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                            visible="false"
-                        >
-                            <Label
-                                text="Marcatore finale:"
-                                labelFor="marFinale"
-                            />
-                            <Input
-                                id="marFinale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/MarkerEndPoint}"
-                                editable="true"
-                                textAlign="Center"
-                                placeholder=""
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                    </l:Grid>
-                    <l:Grid
-                        containerQuery="true"
-                        position="Center"
-                        width="94%"
-                        defaultSpan="XL4 L4 M4"
-                    >
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Latitudine iniziale:"
-                                labelFor="latIniziale"
-                            />
-                            <Input
-                                id="latIniziale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/Zzlatitude_start}"
-                                editable="true"
-                                textAlign="Center"
-                                placeholder=""
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Latitudine finale:"
-                                labelFor="latFinale"
-                            />
-                            <Input
-                                id="latFinale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/Zzlatitude_end}"
-                                editable="true"
-                                textAlign="Center"
-                                placeholder=""
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Latitudine centrale:"
-                                labelFor="latCentrale"
-                            />
-                            <Input
-                                id="latCentrale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/ZZLATITUDE_CEN}"
-                                editable="true"
-                                textAlign="Center"
-                                placeholder=""
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                    </l:Grid>
-                    <l:Grid
-                        containerQuery="true"
-                        position="Center"
-                        width="94%"
-                        defaultSpan="XL4 L4 M4"
-                    >
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Longitudine iniziale:"
-                                labelFor="lonIniziale"
-                            />
-                            <Input
-                                id="lonIniziale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/Zzlongitude_start}"
-                                editable="true"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Longitudine finale:"
-                                labelFor="lonFinale"
-                            />
-                            <Input
-                                id="lonFinale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/Zzlongitude_end}"
-                                editable="true"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Longitudine centrale:"
-                                labelFor="lonCentrale"
-                            />
-                            <Input
-                                id="lonCentrale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/ZZLONGITUDE_CEN}"
-                                editable="true"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                    </l:Grid>
-                    <l:Grid
-                        containerQuery="true"
-                        position="Center"
-                        width="94%"
-                        defaultSpan="XL4 L4 M4"
-                    >
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Quota Iniziale:"
-                                labelFor="QuotaInizio"
-                            />
-                            <Input
-                                id="QuotaInizio"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/quota_ini}"
-                                placeholder="Quota Iniziale"
-                                textAlign="Center"
-                                width="15rem"
-                                editable="true"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Quota Finale:"
-                                labelFor="QuotaFine"
-                            />
-                            <Input
-                                id="QuotaFine"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/quota_fin}"
-                                placeholder=""
-                                textAlign="Center"
-                                width="15rem"
-                                editable="true"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                        <FlexBox
-                            height="30px"
-                            width="90%"
-                            alignItems="Center"
-                            justifyContent="SpaceBetween"
-                        >
-                            <Label
-                                text="Quota centrale:"
-                                labelFor="QuotaCentrale"
-                            />
-                            <Input
-                                id="QuotaCentrale"
-                                type="Text"
-                                value="{ModelloInput>/DataGeneral/ZZQUOTA_CEN}"
-                                placeholder="Quota Finale"
-                                textAlign="Center"
-                                width="15rem"
-                                editable="true"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </FlexBox>
-                    </l:Grid>
-                </content>
-            </Panel>
-            <!-- </l:VerticalLayout> -->
-            <OverflowToolbar id="otbSubheader">
-                <Label
-                    text="Scegli una classe per visualizzare i dati:"
-                    labelFor="classe2"
-                />
-                 <ComboBox
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Quota Iniziale:"
+                                    labelFor="QuotaInizio"
+                                />
+                                <Input
+                                    id="QuotaInizio"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/quota_ini}"
+                                    placeholder="Quota Iniziale"
+                                    textAlign="Center"
+                                    width="15rem"
+                                    editable="true"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Quota Finale:"
+                                    labelFor="QuotaFine"
+                                />
+                                <Input
+                                    id="QuotaFine"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/quota_fin}"
+                                    placeholder=""
+                                    textAlign="Center"
+                                    width="15rem"
+                                    editable="true"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                height="30px"
+                                width="90%"
+                                alignItems="Center"
+                                justifyContent="SpaceBetween"
+                            >
+                                <Label
+                                    text="Quota centrale:"
+                                    labelFor="QuotaCentrale"
+                                />
+                                <Input
+                                    id="QuotaCentrale"
+                                    type="Text"
+                                    value="{ModelloInput>/DataGeneral/ZZQUOTA_CEN}"
+                                    placeholder="Quota Finale"
+                                    textAlign="Center"
+                                    width="15rem"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                            </FlexBox>
+                        </l:Grid>
+                    </content>
+                </Panel>
+
+                <!-- </l:VerticalLayout> -->
+                <OverflowToolbar id="otbSubheader">
+                    <Label
+                        text="Scegli una classe per visualizzare i dati:"
+                        labelFor="classe2"
+                    />
+                    <ComboBox
                         id="classe2"
                         selectionChange="onChangeClassMain"
                         width="18rem"
@@ -514,62 +529,54 @@
                             text="{stepModel>Kschl}"
                         />
                     </ComboBox>
-                <ToolbarSpacer />
-                <Button
-                    id="Salva"
-                    text="Salva"
-                    icon="sap-icon://save"
-                    press="onSave"
-                />
-                <Button
-                    id="Riga"
-                    text="Aggiungi Tratta"
-                    icon="sap-icon://add"
-                    enabled="{= ${stepModel>/filters/class/key} !== '' }"
-                    press="AggiungiRiga"
-                />
-                <Button
-                    id="Rimuovi"
-                    icon="sap-icon://decline"
-                    tooltip="clear selection"
-                    text="Rimuovi Tratta"
-                    press="clearSelection"
-                    enabled="{= ${stepModel>/filters/class/key} !== '' }"
-                    ariaHasPopup="Dialog"
-                />
-                <!-- ///Copia tratta per classe TRATTA + CARATTERISTICHE -->
-                <Button
-                    id="CopiaTratta"
-                    icon="sap-icon://copy"
-                    tooltip="Copia Tratta"
-                    text="Copia Tratta"
-                    press="OnCopiaTratta"
-                    enabled="{= ${stepModel>/filters/class/key} !== '' }"
-                    ariaHasPopup="Dialog"
-                /> 
-                <!-- ///Copia tratta per classe TRATTA + CARATTERISTICHE -->
-                <!-- <Button
-                    id="CopiaTratta"
-                    icon="sap-icon://decline"
-                    tooltip="Copia Tratta"
-                    text="Copia Tratta"
-                    press="OnCopiaTratta"
-                    enabled="{= ${stepModel>/filters/class/key} !== '' }"
-                    ariaHasPopup="Dialog"/>  -->
-                <!-- Copia tratta per classe TRATTA + CARATTERISTICHE -->
-            </OverflowToolbar>
-            <!-- Tabella principale -->
-            <table:Table
-                id="TabellaPrincipale"
-                rowHeight='50'
-                visible="{FlowModel>/TableVisibility}"
-                rowSelectionChange="OnRowChange"
-                fixedColumnCount="{= ${stepModel>/filters/class/key} === 'Z_CENTRI' ? 4 : 3 }"  selectionMode="Single"
-            >
-                <!-- Cambiare con questo dopo il deploy  -->
-                <!-- fixedColumnCount="{= ${stepModel>/filters/class/key} === 'Z_CENTRI' ? 4 : 3 }"  selectionMode="Single"-->
-                <!-- fixedColumnCount="3" -->
-                <!-- <columns>
+                    <ToolbarSpacer />
+                    <Button
+                        id="Salva"
+                        text="Salva"
+                        icon="sap-icon://save"
+                        type="Transparent"
+                        press="onSave"
+                    />
+                    <Button
+                        id="Riga"
+                        text="Aggiungi Tratta"
+                        icon="sap-icon://add"
+                        type="Transparent"
+                        enabled="{= ${stepModel>/filters/class/key} !== '' }"
+                        press="AggiungiRiga"
+                    />
+                    <Button
+                        id="Rimuovi"
+                        icon="sap-icon://decline"
+                        tooltip="clear selection"
+                        text="Rimuovi Tratta"
+                        press="clearSelection"
+                        enabled="{= ${stepModel>/filters/class/key} !== '' }"
+                        ariaHasPopup="Dialog"
+                    />
+                    <!-- ///Copia tratta per classe TRATTA + CARATTERISTICHE -->
+                    <Button
+                        id="CopiaTratta"
+                        icon="sap-icon://copy"
+                        tooltip="Copia Tratta"
+                        text="Copia Tratta"
+                        press="OnCopiaTratta"
+                        enabled="{= ${stepModel>/filters/class/key} !== '' }"
+                        ariaHasPopup="Dialog"
+                    />
+                    <!-- Copia tratta per classe TRATTA + CARATTERISTICHE -->
+                </OverflowToolbar>
+                <!-- Tabella principale -->
+                <table:Table
+                    id="TabellaPrincipale"
+                    rowHeight='50'
+                    selectionMode="Single"
+                    rowSelectionChange="OnRowChange"
+                    fixedColumnCount="{= ${stepModel>/filters/class/key} === 'Z_CENTRI' ? 4 : 3 }"
+                >
+                    <!-- Cambiare con questo dopo il deploy  -->
+                    <!-- fixedColumnCount="{= ${stepModel>/filters/class/key} === 'Z_CENTRI' ? 4 : 3 }"  selectionMode="Single"-->
+                    <!-- <columns>
                     <Column
                         
                         width="12em"
@@ -609,7 +616,8 @@
                         </cells>
                     </ColumnListItem>
                     </items> -->
-            </table:Table>
-        </ScrollContainer>
+                </table:Table>
+            </ScrollContainer>
+        </content>
     </Page>
 </mvc:View>

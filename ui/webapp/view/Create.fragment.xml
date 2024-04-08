@@ -70,7 +70,7 @@
                     <layoutData>
                         <l:GridData linebreak="true" />
                     </layoutData>
-                    <Label text="Progressiva iniziale:" />
+                    <Label text="Progressiva iniziale (m):" />
                     <Input
                         value="{
                             path:'InputModel>/StartPoint',
@@ -95,7 +95,7 @@
                     alignItems="Center"
                     justifyContent="SpaceBetween"
                 >
-                    <Label text="Progressiva finale:" />
+                    <Label text="Progressiva finale (m):" />
                     <Input
                         value="{
                             path:'InputModel>/EndPoint',

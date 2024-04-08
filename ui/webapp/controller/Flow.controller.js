@@ -130,20 +130,21 @@ sap.ui.define([
 		onOpenCapisaldiDialog: function () {
 			var oModel = this.getView().getModel("ModelloFragment");
 			var oView = this.getView();
-			if (!this._pValueHelpDialog) {
-				this._pValueHelpDialog = Fragment.load({
+			if (!this._cValueHelpDialog) {
+				this._cValueHelpDialog = Fragment.load({
 					name: "my.company.simmflocext.view.fragment.CapisaldiDialog",
 					controller: this
-				}).then(function (oValueHelpDialog) {
-					oView.addDependent(oValueHelpDialog);
-					return oValueHelpDialog;
+				}).then(function (cValueHelpDialog) {
+					oView.addDependent(cValueHelpDialog);
+					return cValueHelpDialog;
 				});
 			}
 
-			this._pValueHelpDialog.then(function (oValueHelpDialog) {
-				oValueHelpDialog.open();
+			this._cValueHelpDialog.then(function (cValueHelpDialog) {
+				cValueHelpDialog.open();
 			}.bind(this));
 		},
+		
 		onOpenPlantPlantDialog: function () {
 			var oModel = this.getView().getModel("ModelloFragment");
 			var oView = this.getView();
@@ -162,6 +163,7 @@ sap.ui.define([
 				oValueHelpDialog.open();
 			}.bind(this));
 		},
+		
 		onMouseOverTable: function () {
 			var oTable = this.getView().byId("TabellaPrincipale");
 			var aRows = oTable.getRows();
@@ -194,13 +196,83 @@ sap.ui.define([
 				return
 			}
 			this.onCheckMandatoryCells(stepModel, tempCheck)
-			let inputPlanplant = this.getView().byId("inputPlanplant")
+			// let inputPlanplant = this.getView().byId("inputPlanplant")
+			// let latIniziale = this.getView().byId("latIniziale")
+			// let latFinale = this.getView().byId("latFinale")
+			// let lonIniziale = this.getView().byId("lonIniziale")
+			// let lonFinale = this.getView().byId("lonFinale")
+			// let QuotaInizio = this.getView().byId("QuotaInizio")
+			// let QuotaFine = this.getView().byId("QuotaFine")
+			
+			// let category = this.getView().getModel("ModelloFragment").oData.DataSpecific.Category
+								// if (inputPlanplant.mProperties.value === "" && category === "O") {
+								// 	inputPlanplant.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+								// if (latIniziale.mProperties.value === ""  && category === "O") {
+								// 	latIniziale.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+								// if (latFinale.mProperties.value === ""  && category === "O") {
+								// 	latFinale.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+								// if (lonIniziale.mProperties.value === ""  && category === "O") {
+								// 	lonIniziale.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+								// if (lonFinale.mProperties.value === ""  && category === "O") {
+								// 	lonFinale.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+								
+
+								// if (QuotaInizio.mProperties.value === ""  && category === "O") {
+								// 	QuotaInizio.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+								// if (QuotaFine.mProperties.value === ""  && category === "O") {
+								// 	QuotaFine.setValueState(sap.ui.core.ValueState.Error)
+								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+								// 	return
+								// }
+
+
+			let inputs = [
+				this.getView().byId("inputPlanplant"),
+				this.getView().byId("latIniziale"),
+				this.getView().byId("latFinale"),
+				this.getView().byId("lonIniziale"),
+				this.getView().byId("lonFinale"),
+				this.getView().byId("QuotaInizio"),
+				this.getView().byId("QuotaFine")
+			];
 			let category = this.getView().getModel("ModelloFragment").oData.DataSpecific.Category
-			if (inputPlanplant.mProperties.value === "" && category === "O") {
-				inputPlanplant.setValueState(sap.ui.core.ValueState.Error)
-				new sap.m.MessageBox.alert("Compila tutti i campi")
-				return
+			let isEmpty = false;
+			for (let input of inputs) {
+				if (input.mProperties.value === "" && category === "O") {
+					input.setValueState(sap.ui.core.ValueState.Error);
+					isEmpty = true;
+				}
 			}
+
+			if (isEmpty) {
+				new sap.m.MessageBox.alert("Compila tutti i campi");
+				return;
+			}
+
 
 			const oController = this;
 			oController.save_busy_dialog.open();
@@ -576,11 +648,11 @@ sap.ui.define([
 				window.dataid = values
 			}
 			if (category === "O" && (manserno === "1" || manserno === 1) && !(r_ctrl_tratta.data.Message.toUpperCase() === "OK")) {
-				sap.m.MessageBox.warning(r_ctrl_tratta.data.Message, { actions: [sap.m.MessageBox.Action.CANCEL, sap.m.MessageBox.Action.OK], onClose: onCloseControlloTratte })
+				sap.m.MessageBox.error(r_ctrl_tratta.data.Message, { actions: [sap.m.MessageBox.Action.CANCEL], onClose: onCloseControlloTratte })
 				return;
 			}
 			if (!controller.is_in_interval(tratta_start_point, tratta_end_point, start_point, end_point) && stepModel.getData().data.DataSpecific.Category === "S") {
-				sap.m.MessageBox.warning("Tratta inserita non coerente con dati di testata.", { actions: [sap.m.MessageBox.Action.CANCEL, sap.m.MessageBox.Action.OK], onClose: onCloseControlloTratte })
+				sap.m.MessageBox.error("Tratta inserita non coerente con dati di testata.", { actions: [sap.m.MessageBox.Action.CANCEL], onClose: onCloseControlloTratte })
 				return;
 			}
 			await onCloseControlloTratte("OK");
@@ -2109,11 +2181,13 @@ sap.ui.define([
 							that.getView().byId("lonCentrale").setEditable(false)
 							that.getView().byId("QuotaCentrale").setEditable(false)
 							that.getView().byId("latCentrale").setEditable(false)
+							that.getView().byId("inputPlanplant").setEditable(false)
 						} else if (sZKiException === "A" || sZKiException === "" || sZKiException === "X") {
 							that.getView().byId("Descrizione").setEditable(true)
 							that.getView().byId("pIniz").setEditable(true)
 							that.getView().byId("pFin").setEditable(true)
 							that.getView().byId("Salva").setEnabled(true)
+							that.getView().byId("inputPlanplant").setEditable(true)
 							that.getView().byId("CopiaTratta").setEnabled(true)
 							that.getView().byId("latIniziale").setEditable(true)
 							that.getView().byId("latFinale").setEditable(true)

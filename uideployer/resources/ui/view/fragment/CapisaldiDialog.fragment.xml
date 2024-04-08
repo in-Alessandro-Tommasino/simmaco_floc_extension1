@@ -5,7 +5,7 @@
     <Dialog id="CapisaldiDialog" title="Note" >
       
     	
-		<TextArea id="NoteArea" value="{ModelloFragment>/DataGeneral/capisaldi}" maxLength="2510"  rows="10" placeholder="Enter Text"  width="118rem" height="15rem" editable="{= (${ModelloFragment>/DataGeneral/Abcindic} === ''   || ${ModelloFragment>/DataGeneral/Abcindic} === 'A' ) }"/>
+		<TextArea id="NoteArea" value="{ModelloFragment>/DataGeneral/capisaldi}" maxLength="2510"  rows="10" placeholder="Enter Text"  width="118rem" height="15rem" editable="{= (${ModelloFragment>/DataGeneral/Abcindic} === ''   || ${ModelloFragment>/DataGeneral/Abcindic} === 'A' || ${ModelloFragment>/DataGeneral/Abcindic} === 'X'  ) }"/>
          <beginButton>
         <Button id="CapisaldiDialogButton" text="Chiudi" press=".onDialogClose"/>
         </beginButton> 
