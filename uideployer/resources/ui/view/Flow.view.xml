@@ -48,7 +48,7 @@
                         justifyContent="SpaceBetween"
                     >
                         <Button
-                            visible="{= ${ModelloFragment>/DataSpecific/Category} === 'S' || ${ModelloFragment>/DataSpecific/Category} === 'O' || ${ModelloFragment>/DataGeneral/Manserno} === '1'}"
+                            visible="{= ${ModelloFragment>/DataSpecific/Category} === 'S' || ${ModelloFragment>/DataSpecific/Category} === 'O' || ${ModelloFragment>/DataGeneral/Manserno} === '1' || ${ModelloFragment>/DataGeneral/Manserno} === '2' || ${ModelloFragment>/DataGeneral/Manserno} === '3'}"
                             id="Button-Capisaldi"
                             text="Note"
                             press=".onOpenCapisaldiDialog"

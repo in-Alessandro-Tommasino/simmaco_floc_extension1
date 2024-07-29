@@ -6,7 +6,7 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	'sap/ui/core/Fragment',
 	'sap/ui/model/Filter',
-    'sap/ui/model/FilterOperator',
+	'sap/ui/model/FilterOperator',
 	'sap/ui/core/mvc/Controller',
 	'sap/ui/model/json/JSONModel',
 	'sap/ui/model/odata/v2/ODataModel',
@@ -117,7 +117,7 @@ sap.ui.define([
 				}
 
 
-			
+
 
 
 
@@ -144,7 +144,7 @@ sap.ui.define([
 				cValueHelpDialog.open();
 			}.bind(this));
 		},
-		
+
 		onOpenPlantPlantDialog: function () {
 			var oModel = this.getView().getModel("ModelloFragment");
 			var oView = this.getView();
@@ -163,7 +163,7 @@ sap.ui.define([
 				oValueHelpDialog.open();
 			}.bind(this));
 		},
-		
+
 		onMouseOverTable: function () {
 			var oTable = this.getView().byId("TabellaPrincipale");
 			var aRows = oTable.getRows();
@@ -181,7 +181,7 @@ sap.ui.define([
 				}
 			}
 		},
-		onConfigrmPlantPlant: function(oEvent) {
+		onConfigrmPlantPlant: function (oEvent) {
 			let selectedValue = oEvent.getParameter("selectedItem").getCells()[0].getText().split(' - ')[0]
 			let selectedDescrpit = oEvent.getParameter("selectedItem").getCells()[0].getText().split(' - ')[1]
 			this.getView().getModel("stepModel").setProperty("/data/DataGeneral/Planplant", selectedValue)
@@ -203,51 +203,51 @@ sap.ui.define([
 			// let lonFinale = this.getView().byId("lonFinale")
 			// let QuotaInizio = this.getView().byId("QuotaInizio")
 			// let QuotaFine = this.getView().byId("QuotaFine")
-			
+
 			// let category = this.getView().getModel("ModelloFragment").oData.DataSpecific.Category
-								// if (inputPlanplant.mProperties.value === "" && category === "O") {
-								// 	inputPlanplant.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
+			// if (inputPlanplant.mProperties.value === "" && category === "O") {
+			// 	inputPlanplant.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
 
-								// if (latIniziale.mProperties.value === ""  && category === "O") {
-								// 	latIniziale.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
+			// if (latIniziale.mProperties.value === ""  && category === "O") {
+			// 	latIniziale.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
 
-								// if (latFinale.mProperties.value === ""  && category === "O") {
-								// 	latFinale.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
+			// if (latFinale.mProperties.value === ""  && category === "O") {
+			// 	latFinale.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
 
-								// if (lonIniziale.mProperties.value === ""  && category === "O") {
-								// 	lonIniziale.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
+			// if (lonIniziale.mProperties.value === ""  && category === "O") {
+			// 	lonIniziale.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
 
-								// if (lonFinale.mProperties.value === ""  && category === "O") {
-								// 	lonFinale.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
+			// if (lonFinale.mProperties.value === ""  && category === "O") {
+			// 	lonFinale.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
 
-								
 
-								// if (QuotaInizio.mProperties.value === ""  && category === "O") {
-								// 	QuotaInizio.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
 
-								// if (QuotaFine.mProperties.value === ""  && category === "O") {
-								// 	QuotaFine.setValueState(sap.ui.core.ValueState.Error)
-								// 	new sap.m.MessageBox.alert("Compila tutti i campi")
-								// 	return
-								// }
+			// if (QuotaInizio.mProperties.value === ""  && category === "O") {
+			// 	QuotaInizio.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
+
+			// if (QuotaFine.mProperties.value === ""  && category === "O") {
+			// 	QuotaFine.setValueState(sap.ui.core.ValueState.Error)
+			// 	new sap.m.MessageBox.alert("Compila tutti i campi")
+			// 	return
+			// }
 
 
 			let inputs = [
@@ -509,13 +509,17 @@ sap.ui.define([
 			const category = modello_fragment.getProperty("/DataSpecific/Category");
 			const manserno = modello_fragment.getProperty("/DataGeneral/Manserno");
 			const IWERK = modello_input.getProperty("/DataGeneral/Planplant")
-			const Strada =  input_model.getProperty("/strada")
+			const Strada = input_model.getProperty("/strada")
+			const ClassNumber = input_model.getProperty("/ClassNumber")
 			if (category === "O" && (manserno === "1" || manserno === 1) && (inputModel.strada === "" || inputModel.strada === undefined || inputModel.strada === null)) {
 				sap.m.MessageBox.error("Valorizzare il campo Strada.");
 				return;
 			}
-			const ctrl_tratta_set_key = oModel.createKey("ctrl_trattaSet", { StartPoint: controller.float_to_sap_string(start_point), EndPoint: controller.float_to_sap_string(end_point), ExternalNumber: Strada , Iwerk: IWERK })
-			// const body_ctrl_tratta = { StartPoint: start_point, EndPoint: end_point, ExternalNumber: inputModel.ExternalNumber, Message: "" };
+			let ctrl_tratta_set_key = oModel.createKey("ctrl_trattaSet", { StartPoint: controller.float_to_sap_string(start_point), EndPoint: controller.float_to_sap_string(end_point), ExternalNumber: Strada, Iwerk: IWERK, IdPonte: inputModel.ExternalNumber })			// const body_ctrl_tratta = { StartPoint: start_point, EndPoint: end_point, ExternalNumber: inputModel.ExternalNumber, Message: "" };
+			// let ctrl_tratta_set_key_final = ctrl_tratta_set_key.replace(/(Iwerk='.+?')(?=\))/, "$1,Class= "+"'"+ this.class_name.key+"'");
+			// ctrl_tratta_set_key_final = ctrl_tratta_set_key_final.replace("null", "'" + ClassNumber + "'")
+			// ctrl_tratta_set_key_final = ctrl_tratta_set_key_final.replaceAll(",Class= 'Z_OPERE_LAM'", "")
+			ctrl_tratta_set_key = ctrl_tratta_set_key.replaceAll("Class=null,", "Class=" + "'" + ClassNumber + "'" + ",")
 			const p_ctrl_tratta = new Promise((resolve, reject) => {
 				oModel.read("/" + ctrl_tratta_set_key, {
 					// filters: filters,
@@ -751,14 +755,14 @@ sap.ui.define([
 					bMandatoryEmptyFound = false
 					stepModel.setProperty("/tempCheck", false)
 					for (let cell of cells) {
-						if (cells[0].mProperties.text !== "" && cells[1].mProperties.text !== "") {
+						if (cells[0].mProperties.text.trim() !== "" && cells[1].mProperties.text.trim() !== "") {
 							if (cell instanceof sap.m.Input) {
 								const isMandatory = cell.data("mandatory");
 								const inputValueState = cell.getValueState();
 
 								if (isMandatory && inputValueState === sap.ui.core.ValueState.Error) {
 									const value = cell.getValue();
-									if (value === "") {
+									if (value.trim() === "") {
 										bMandatoryEmptyFound = true;
 									} else {
 										cell.setValueState(sap.ui.core.ValueState.None);
@@ -769,13 +773,13 @@ sap.ui.define([
 					}
 				} else {
 					for (let cell of cells) {
-						if (cells[0].mProperties.text !== "" && cells[1].mProperties.text !== "") {
+						if (cells[0].mProperties.text.trim() !== "" && cells[1].mProperties.text.trim() !== "") {
 							if (cell instanceof sap.m.Input) {
 								cell.setValueState(sap.ui.core.ValueState.None)
 								const isMandatory = cell.data("mandatory");
 								if (isMandatory) {
 									const value = cell.getValue();
-									if (value === "") {
+									if (value.trim() === "") {
 										cell.setValueState(sap.ui.core.ValueState.Error);
 										bMandatoryEmptyFound = true;
 									} else {
@@ -956,14 +960,14 @@ sap.ui.define([
 					aData.push(data[i].ID)
 				}
 
-				 for (const d of data) {
-                        if (!window.data_model.data[`${d.StartPoint}${d.EndPoint}${d.ID}`]) window.data_model.data[`${d.StartPoint}${d.EndPoint}${d.ID}`] = []
-                        window.data_model.data[`${d.StartPoint}${d.EndPoint}${d.ID}`].push(d)
-                        if (!window.data_model.columns.find(column => column.key === d.Charact)) window.data_model.columns.push({ key: d.Charact, descr: d.CharactDescr, atfor: d.atfor, noout: d.noout, colnoout: d.colnoout, ID: d.ID })
-                        const existing_column = window.data_model?.columns.find(column => column.key === d.Charact);
-                        if (existing_column) existing_column.atfor = d.atfor
+				for (const d of data) {
+					if (!window.data_model.data[`${d.StartPoint}${d.EndPoint}${d.ID}`]) window.data_model.data[`${d.StartPoint}${d.EndPoint}${d.ID}`] = []
+					window.data_model.data[`${d.StartPoint}${d.EndPoint}${d.ID}`].push(d)
+					if (!window.data_model.columns.find(column => column.key === d.Charact)) window.data_model.columns.push({ key: d.Charact, descr: d.CharactDescr, atfor: d.atfor, noout: d.noout, colnoout: d.colnoout, ID: d.ID })
+					const existing_column = window.data_model?.columns.find(column => column.key === d.Charact);
+					if (existing_column) existing_column.atfor = d.atfor
 
-                    }
+				}
 			}
 			for (const key of Object.keys(window.data_model.data)) {
 				let entry = {
@@ -1546,7 +1550,7 @@ sap.ui.define([
 			})
 		},
 
-	
+
 
 
 		onSearch: function (oEvent) {
@@ -1899,7 +1903,7 @@ sap.ui.define([
 			} else {
 				let num = parseInt(resultArray.join("")).toLocaleString("de-DE", { minimumFractionDigits: 0, maximumFractionDigits: 3 })
 				let lastIndex = num.lastIndexOf('.');
-				let FormattedNumber=  num.substring(0, lastIndex) + ',' + num.substring(lastIndex + 1);
+				let FormattedNumber = num.substring(0, lastIndex) + ',' + num.substring(lastIndex + 1);
 				if (sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/StartPoint" || sap.ui.getCore().byId(id).mBindingInfos.value.binding.sPath === "/EndPoint") {
 					sap.ui.getCore().byId(id).setValue(FormattedNumber)
 				}
@@ -1915,10 +1919,10 @@ sap.ui.define([
 				sap.m.MessageBox.error(error.message)
 			}
 		},
-	  
+
 		float_to_string: function (f_value) {
 			let s_value = String(f_value);
-		
+
 			if (s_value.length > 7) {
 				s_value = parseFloat(s_value).toFixed(3);
 				s_value = s_value.replace(".", ",");
@@ -1930,8 +1934,8 @@ sap.ui.define([
 			}
 		},
 		///COpia tratta per classe TRATTA + CARATTERISTICHE
-		 ///COpia tratta per classe TRATTA + CARATTERISTICHE
-		 OnCopia: function (oEvent) {
+		///COpia tratta per classe TRATTA + CARATTERISTICHE
+		OnCopia: function (oEvent) {
 			const controller = this;
 			const stepModel = this.getView().getModel("stepModel")
 			var inputModel = this.getView().getModel("InputModel")
@@ -1956,121 +1960,121 @@ sap.ui.define([
 					if (!(oEventControllo === "OK")) {
 						return;
 					}
-					
-				var LinearLength = controller.float_to_string(end_point - start_point);
-				var LinearUnit = inputModel.getProperty("/LinearUnit")
-				// const values = stepModel.getProperty("/values")
-				const values = stepModel.getProperty(`/all_values/${this.class_name.key}/values`)
-				const data = stepModel.getProperty("/data")
-				start_point = controller.float_to_sap_string(start_point)
-				end_point = controller.float_to_sap_string(end_point)
 
-				for (let i = 0; i < aSelectedObjects.length; i++) {
-					var max = 0
-					var entrata = false
-					const found =
-						values
-							?.filter(x => x.StartPoint.trim() === start_point.replace(".", "") && x.EndPoint.trim() === end_point.replace(".", ""))
-							?.map(x => x.ID)
-							?.sort((a, b) => {
-								// Converte le stringhe in numeri interi e confronta
-								const numA = parseInt(a, 10);
-								const numB = parseInt(b, 10);
-								if (numA < numB) {
-									return 1; // Cambia in -1 per l'ordine crescente
-								} else if (numA > numB) {
-									return -1; // Cambia in 1 per l'ordine crescente
-								} else {
-									return 0;
-								}
-							});  // searching for tratta with same end point and start point
-					if (found && Array.isArray(found) && found.length > 0) {
-						try {
-							max = parseInt(found[0]) + 1;
-						} catch (error) {
-							sap.m.MessageBox.error(`Errore nella creazione dell'ID:\n${error.message}`)
+					var LinearLength = controller.float_to_string(end_point - start_point);
+					var LinearUnit = inputModel.getProperty("/LinearUnit")
+					// const values = stepModel.getProperty("/values")
+					const values = stepModel.getProperty(`/all_values/${this.class_name.key}/values`)
+					const data = stepModel.getProperty("/data")
+					start_point = controller.float_to_sap_string(start_point)
+					end_point = controller.float_to_sap_string(end_point)
+
+					for (let i = 0; i < aSelectedObjects.length; i++) {
+						var max = 0
+						var entrata = false
+						const found =
+							values
+								?.filter(x => x.StartPoint.trim() === start_point.replace(".", "") && x.EndPoint.trim() === end_point.replace(".", ""))
+								?.map(x => x.ID)
+								?.sort((a, b) => {
+									// Converte le stringhe in numeri interi e confronta
+									const numA = parseInt(a, 10);
+									const numB = parseInt(b, 10);
+									if (numA < numB) {
+										return 1; // Cambia in -1 per l'ordine crescente
+									} else if (numA > numB) {
+										return -1; // Cambia in 1 per l'ordine crescente
+									} else {
+										return 0;
+									}
+								});  // searching for tratta with same end point and start point
+						if (found && Array.isArray(found) && found.length > 0) {
+							try {
+								max = parseInt(found[0]) + 1;
+							} catch (error) {
+								sap.m.MessageBox.error(`Errore nella creazione dell'ID:\n${error.message}`)
+							}
 						}
-					}
 
-					const headers = stepModel.getProperty(`/all_values/${this.class_name.key}/headers`)
-					props_to_remove = ["StartPoint", "EndPoint", "LinearLength", "LinearUnit"]
-					const charactheristics = headers.filter(header => !props_to_remove.includes(header.key))
+						const headers = stepModel.getProperty(`/all_values/${this.class_name.key}/headers`)
+						props_to_remove = ["StartPoint", "EndPoint", "LinearLength", "LinearUnit"]
+						const charactheristics = headers.filter(header => !props_to_remove.includes(header.key))
 
-					var new_value = {
-						StartPoint: start_point,
-						EndPoint: end_point,
-						LinearLength: LinearLength,
-						ID: String(max),
-						LinearUnit: LinearUnit,
-						ClassNumber: stepModel.oData.filters.class.key
-					}
-					
-					let se_value_set = []
-
-					for (const c of charactheristics) {
-						new_value[c.key] = aSelectedObjects[i][c.key]
-						se_value_set.push({
-							ExternalNumber: this.getView().getModel("ModelloFragment").oData.ExternalNumber,
-							ClassNumber: stepModel.oData.filters.class.key,
+						var new_value = {
 							StartPoint: start_point,
 							EndPoint: end_point,
 							LinearLength: LinearLength,
-							LinearUnit: LinearUnit,
-							ValueChar: new_value[c.key],
 							ID: String(max),
-							Charact: c.key,
-							CharactDescr: c.descr,
-							atfor: c.atfor
-						})
-					}
-
-
-					data.StartEndPointSet.results.push({
-						ExternalNumber: this.getView().getModel("ModelloFragment").oData.ExternalNumber,
-						StartPoint: start_point,
-						EndPoint: end_point,
-						ClassNumber: stepModel.oData.filters.class.key,
-						LinearLength: LinearLength,
-						LinearUnit: LinearUnit,
-						/*     Unauthorized: false, */
-						CharStartEndPointValueSet: {
-							results: se_value_set
+							LinearUnit: LinearUnit,
+							ClassNumber: stepModel.oData.filters.class.key
 						}
-					})
-					
-					if (category === "O" && (manserno === "1" || manserno === 1)) {
-						if (controller.class_name.key === "Z_OPERE_LAM")
-							new_value["Z_STRADA1_SU_OPERA"] = strada;
-						if (controller.class_name.key === "Z_SOVRAPPASSI")
-							new_value["Z_STRADA"] = strada;
+
+						let se_value_set = []
+
+						for (const c of charactheristics) {
+							new_value[c.key] = aSelectedObjects[i][c.key]
+							se_value_set.push({
+								ExternalNumber: this.getView().getModel("ModelloFragment").oData.ExternalNumber,
+								ClassNumber: stepModel.oData.filters.class.key,
+								StartPoint: start_point,
+								EndPoint: end_point,
+								LinearLength: LinearLength,
+								LinearUnit: LinearUnit,
+								ValueChar: new_value[c.key],
+								ID: String(max),
+								Charact: c.key,
+								CharactDescr: c.descr,
+								atfor: c.atfor
+							})
+						}
+
+
+						data.StartEndPointSet.results.push({
+							ExternalNumber: this.getView().getModel("ModelloFragment").oData.ExternalNumber,
+							StartPoint: start_point,
+							EndPoint: end_point,
+							ClassNumber: stepModel.oData.filters.class.key,
+							LinearLength: LinearLength,
+							LinearUnit: LinearUnit,
+							/*     Unauthorized: false, */
+							CharStartEndPointValueSet: {
+								results: se_value_set
+							}
+						})
+
+						if (category === "O" && (manserno === "1" || manserno === 1)) {
+							if (controller.class_name.key === "Z_OPERE_LAM")
+								new_value["Z_STRADA1_SU_OPERA"] = strada;
+							if (controller.class_name.key === "Z_SOVRAPPASSI")
+								new_value["Z_STRADA"] = strada;
+						}
+
+						values.push(new_value)
+
+						//     // Ordina l'array di valori in base a StartPoint
+
+						//     // Aggiorna il binding
+						// var oTable = this.getView().byId("TabellaPrincipale");
+						// oTable.unbindRows();
+						// oTable.bindRows({
+						//     path: 'stepModel>/values',
+						//     sorter: { path: 'StartPoint', descending: false }
+						// });
+
+
 					}
-
-					values.push(new_value)
-
-					//     // Ordina l'array di valori in base a StartPoint
-
-					//     // Aggiorna il binding
-					// var oTable = this.getView().byId("TabellaPrincipale");
-					// oTable.unbindRows();
-					// oTable.bindRows({
-					//     path: 'stepModel>/values',
-					//     sorter: { path: 'StartPoint', descending: false }
-					// });
-
-
-				}
-				values.sort(function (a, b) {
-					const numA = parseFloat(a.StartPoint.trim());
-					const numB = parseFloat(b.StartPoint.trim());
-					return numA - numB;
-				});
-				stepModel.setProperty(`/all_values/${this.class_name.key}/values`, values)
-				stepModel.setProperty("/data", data)
-				this.getView().getModel("InputModel").setProperty("/StartPoint", "")
-				this.getView().getModel("InputModel").setProperty("/EndPoint", "")
-				this.getView().getModel("InputModel").setProperty("/LinearLength", "")
-				window.dataid = values
-				this.CopiaValueDialog.close()
+					values.sort(function (a, b) {
+						const numA = parseFloat(a.StartPoint.trim());
+						const numB = parseFloat(b.StartPoint.trim());
+						return numA - numB;
+					});
+					stepModel.setProperty(`/all_values/${this.class_name.key}/values`, values)
+					stepModel.setProperty("/data", data)
+					this.getView().getModel("InputModel").setProperty("/StartPoint", "")
+					this.getView().getModel("InputModel").setProperty("/EndPoint", "")
+					this.getView().getModel("InputModel").setProperty("/LinearLength", "")
+					window.dataid = values
+					this.CopiaValueDialog.close()
 				}
 
 				if (!controller.is_in_interval(tratta_start_point, tratta_end_point, start_point, end_point) && stepModel.getData().data.DataSpecific.Category === "S") {
@@ -2098,7 +2102,7 @@ sap.ui.define([
 			const aFilters = [
 				new sap.ui.model.Filter("FLTYP", sap.ui.model.FilterOperator.EQ, "S"),
 				new Filter("TPLNR", FilterOperator.Contains, numero_sede_tecnica),
-				new Filter("IWERK", FilterOperator.EQ, iwerk)
+				new Filter("IWERK", FilterOperator.EQ, iwerk),
 			]
 			oModel.read("/DatiIflotSet", {
 				filters: [aFilters],
@@ -2166,6 +2170,8 @@ sap.ui.define([
 						}
 						let sZKiException = that.getView().getModel("ModelloInput").oData.DataGeneral.Abcindic
 						let Consttype = that.getView().getModel("ModelloInput").oData.DataGeneral.Consttype
+						let Manserno = that.getView().getModel("ModelloInput").oData.DataGeneral.Manserno
+						let Objecttype = that.getView().getModel("ModelloInput").oData.DataGeneral.Objecttype
 						if (sZKiException === "C") {
 							that.getView().byId("Descrizione").setEditable(false)
 							that.getView().byId("pIniz").setEditable(false)
@@ -2214,6 +2220,39 @@ sap.ui.define([
 							that.getView().byId("QuotaCentrale").setEditable(false)
 							that.getView().byId("latCentrale").setEditable(false)
 						}
+						if ((Objecttype === "OA01" && (Manserno === "2" || Manserno === "3"))) {
+							that.getView().byId("Descrizione").setEditable(false);
+							that.getView().byId("pIniz").setEditable(false);
+							that.getView().byId("pFin").setEditable(false);
+							that.getView().byId("inputPlanplant").setEditable(false);
+							that.getView().byId("Salva").setEnabled(false);
+							that.getView().byId("CopiaTratta").setEnabled(false);
+							that.getView().byId("latIniziale").setEditable(false);
+							that.getView().byId("latFinale").setEditable(false);
+							that.getView().byId("lonIniziale").setEditable(false);
+							that.getView().byId("lonFinale").setEditable(false);
+							that.getView().byId("QuotaInizio").setEditable(false);
+							that.getView().byId("QuotaFine").setEditable(false);
+							that.getView().byId("lonCentrale").setEditable(false);
+							that.getView().byId("QuotaCentrale").setEditable(false);
+							that.getView().byId("latCentrale").setEditable(false);
+						} else if ((Objecttype === "OA03" && (Manserno === "2" || Manserno === "3"))) {
+							that.getView().byId("Descrizione").setEditable(true);
+							that.getView().byId("pIniz").setEditable(false);
+							that.getView().byId("pFin").setEditable(false);
+							that.getView().byId("Salva").setEnabled(false);
+							that.getView().byId("inputPlanplant").setEditable(false);
+							that.getView().byId("CopiaTratta").setEnabled(false);
+							that.getView().byId("latIniziale").setEditable(false);
+							that.getView().byId("latFinale").setEditable(false);
+							that.getView().byId("lonIniziale").setEditable(false);
+							that.getView().byId("lonFinale").setEditable(false);
+							that.getView().byId("QuotaInizio").setEditable(false);
+							that.getView().byId("QuotaFine").setEditable(false);
+							that.getView().byId("lonCentrale").setEditable(false);
+							that.getView().byId("QuotaCentrale").setEditable(false);
+							that.getView().byId("latCentrale").setEditable(false);
+						}
 						//-------------------------------------------------------------------------------------------------
 						// create JSON model for label input 
 						var ModelloInputModelFragment = new sap.ui.model.json.JSONModel();
@@ -2222,10 +2261,10 @@ sap.ui.define([
 						if (that.getView().getModel("ModelloFragment").oData.DataGeneral.capisaldi !== "") {
 							that.getView().getModel("ModelloFragment").oData.DataGeneral.capisaldi = that.getView().getModel("ModelloFragment").oData.DataGeneral.capisaldi.replaceAll("#", "\n")
 							const Capisaldi = that.getView().getModel("ModelloFragment").oData.DataGeneral.capisaldi
-							that.getView().getModel("ModelloFragment").setProperty("/DataGeneral/capisaldi" , Capisaldi)
+							that.getView().getModel("ModelloFragment").setProperty("/DataGeneral/capisaldi", Capisaldi)
 						} else {
 							const Capisaldi = that.getView().getModel("ModelloFragment").oData.DataGeneral.capisaldi
-							that.getView().getModel("ModelloFragment").setProperty("/DataGeneral/capisaldi" , Capisaldi)
+							that.getView().getModel("ModelloFragment").setProperty("/DataGeneral/capisaldi", Capisaldi)
 						}
 						that.getView().getModel("stepModel").setProperty("/data", oData)
 						// Parte per il traversa di default
