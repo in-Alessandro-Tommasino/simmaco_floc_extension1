@@ -501,8 +501,24 @@ sap.ui.define([
 			const modello_input = this.getView().getModel("ModelloInput")
 			inputModel.ExternalNumber = this.getView().getModel("ModelloFragment").oData.ExternalNumber
 			const stepModel = this.getView().getModel("stepModel")
-			const tratta_start_point = parseFloat(modello_input.getProperty("/DataGeneral/StartPoint").replace(".", "").replace(",", "."))
-			const tratta_end_point = parseFloat(modello_input.getProperty("/DataGeneral/EndPoint").replace(".", "").replace(",", "."))
+			 // Funzione per convertire stringa in formato europeo a float
+			 function convertToFloat(euroNumber) {
+				// Se ci sono più di un punto, è un numero grande con separatori delle migliaia
+				if ((euroNumber.match(/\./g) || []).length > 1) {
+					// Rimuove tutti i punti (separatore delle migliaia)
+					let numberWithoutDots = euroNumber.replace(/\./g, "");
+					// Sostituisce la virgola decimale con un punto
+					let numberWithDot = numberWithoutDots.replace(",", ".");
+					// Converte la stringa risultante in un numero float
+					return parseFloat(numberWithDot);
+				} else {
+					// Per numeri senza separatori delle migliaia
+					return parseFloat(euroNumber.replace(".", "").replace(",", "."));
+				}
+			}
+		
+			const tratta_start_point = convertToFloat(modello_input.getProperty("/DataGeneral/StartPoint"));
+			const tratta_end_point = convertToFloat(modello_input.getProperty("/DataGeneral/EndPoint"));
 			let start_point = input_model.getProperty("/StartPoint")
 			let end_point = input_model.getProperty("/EndPoint")
 			const modello_fragment = controller.getView().getModel("ModelloFragment");
@@ -595,6 +611,8 @@ sap.ui.define([
 						new_value["Z_STRADA1_SU_OPERA"] = inputModel.strada;
 					if (controller.class_name.key === "Z_SOVRAPPASSI")
 						new_value["Z_STRADA"] = inputModel.strada;
+					if (controller.class_name.key === "Z_O_03_OPERELAM")
+					    new_value["Z_SP_STRADA1_SU_OPERA"] = inputModel.strada;
 				}
 				let se_value_set = []
 
@@ -1236,6 +1254,59 @@ sap.ui.define([
 
 				//Codice nel caso sia Z_STRADA1_SU_OPERA 
 			}
+			///Codice Nuovo 06/09  Z_SP_STRADA1_SU_OPERA
+			if (oContext.getObject().key === "Z_SP_STRADA1_SU_OPERA" && MasernoIF == "1" && CategoryIF == "O" && selectedClass === "Z_O_03_OPERELAM") {
+				//Codice nel caso sia Z_SP_STRADA1_SU_OPERA 
+				window.CheckColumn = oContext.getObject()
+				const nonEditableClassNames = ["Z_EST_CENTRO_MAN", "Z_EST_NUCLEO", "Z_EST_SQUADRA", "Z_EST_SORVEGLIANZA", "StartPoint", "EndPoint", "LinearLength", "LinearUnit"];
+				const formattingClassNames = ["DATA_AGG", "DATA_FATT_SOSP", "Z_VET_DATADELIBERA_T_1", "Z_VET_DATAPRATICA_T_1", "Z_TVT_DATAVERBALE_T_1", "Z_ESM_VALIDADAL", "Z_ESM_VALIDAAL", "Z_TRT_DATACOMP_KI_1", "Z_DATADELIBERA_T_1", "Z_DATAPRATICA_T_1", "Z_DATAVERBALE_T_1", "Z_ESI_DATAPROTCOMP_I_1", "Z_ESTESE_VALIDAAL", "Z_ESTESE_VALIDADAL", "Z_EST_VALIDAAL", "Z_EST_VALIDADAL", "Z_I_ESI_DATAPROTCOMP", "Z_KI_DATACOMP", "Z_T_DATADELIBERA", "Z_T_DATAPRATICA", "Z_T_DATAVERBALE", "Z_DT", "Z_KI_DATACOMP_PROVV", "Z_STD_DATAVERBALE", "Z_DATA_ODS"]
+				const editableColumn = column.colnoout
+				const isNonEditableColumn = nonEditableClassNames.includes(column.key);
+				const shouldBeFormatted = formattingClassNames.includes(column.key)
+				const isMandatory = mandatoryProp.includes(column.key)
+				return new sap.ui.table.Column({
+					filterProperty: columnFilter,
+					width: "13em",
+					visible: !(column.noout && column.noout === "X" || column.NO_DISPLAY === "X"),
+					label: new sap.m.Text({
+						text: column.descr,
+						design: "bold"
+					}),
+					tooltip: column.key,
+					template: (editableColumn || isNonEditableColumn) ? new sap.m.Text({
+						text: {
+							parts: [{ path: `stepModel>${column.key}` }],
+							formatter: function (value) {
+								if (column.key === "LinearUnit") {
+									return value ? value.toLowerCase() : '';
+								} else if (column.key) {
+									return this.formatNumberWithThousandSeparator(value);
+								}
+								return value;
+							}.bind(this)
+						}
+					}) : new sap.m.Input({
+						value: `{stepModel>${column.key}}`,
+						valueHelpOnly: true,
+						showValueHelp: true,
+						liveChange: function (oEvent) { oEvent.getSource().setValueState(sap.ui.core.ValueState.None) },
+						valueHelpRequest: this.openValueHelp_SU_OPERA1.bind(this, column),
+						change: this.onStradaChange,
+						maxLength: 30,
+						customData: [
+							new sap.ui.core.CustomData({
+								key: "mandatory",
+								value: isMandatory
+							})
+						],
+						editable: "{= !${stepModel>Unauthorized}}",
+					}).addStyleClass("without-border")
+				})
+
+				//Codice nel caso sia Z_SP_STRADA1_SU_OPERA 
+			}
+
+			///Codice Nuovo 06/09 Z_SP_STRADA1_SU_OPERA
 
 			///////////////////////////Codice nel caso sia disattivo///////////////////////////////////////////////////////////////////////////////////
 
