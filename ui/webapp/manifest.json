@@ -61,7 +61,7 @@
     "sap.ui5": {
         "_version": "1.1.0",
         "dependencies": {
-            "minUI5Version": "1.115.0",
+            "minUI5Version": "1.120.12",
             "libs": {
                 "sap.iot.ain.lib.reusable": {}
             }

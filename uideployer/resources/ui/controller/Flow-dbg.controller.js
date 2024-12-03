@@ -951,19 +951,22 @@ sap.ui.define([
 							new sap.ui.model.Filter("Fltyp", sap.ui.model.FilterOperator.EQ, oDataResults.DataSpecific.Category),
 							new sap.ui.model.Filter("RemoveDuplicates", sap.ui.model.FilterOperator.EQ, "Zattribsap")
 						],
-						success: function (oData, oRes) {
-							for (const res of oData.results) {
-								window.data_model.columns.push({
-									key: res.Zattribsap,
-									descr: res.Atbez,
-									atfor: res.atfor,
-									noout: res.noout,
-									colnoout: res.colnoout,
-									NO_DISPLAY: res.NO_DISPLAY,
-								})
-							}
-							resolve()
-						},
+						success: function (oData) {
+                    for (const res of oData.results) {
+                        const columnExists = window.data_model.columns.some(column => column.key === res.Zattribsap);
+                        if (!columnExists) {
+                            window.data_model.columns.push({
+                                key: res.Zattribsap,
+                                descr: res.Atbez,
+                                atfor: res.atfor,
+                                noout: res.noout,
+                                colnoout: res.colnoout,
+                                NO_DISPLAY: res.NO_DISPLAY,
+                            });
+                        }
+                    }
+                    resolve();
+                },
 						error: function (oErr) {
 							resolve()
 						}
@@ -1207,7 +1210,7 @@ sap.ui.define([
 			if (oContext.getObject().key === "Z_STRADA1_SU_OPERA" || oContext.getObject().key === "Z_STRADA" && MasernoIF == "1" && CategoryIF == "O" && selectedClass == "Z_OPERE_LAM" || oContext.getObject().key === "Z_STRADA" && MasernoIF == "1" && CategoryIF == "O" && selectedClass === "Z_SOVRAPPASSI") {
 				//Codice nel caso sia Z_STRADA1_SU_OPERA 
 				window.CheckColumn = oContext.getObject()
-				const nonEditableClassNames = ["Z_EST_CENTRO_MAN", "Z_EST_NUCLEO", "Z_EST_SQUADRA", "Z_EST_SORVEGLIANZA", "StartPoint", "EndPoint", "LinearLength", "LinearUnit"];
+				const nonEditableClassNames = ["Z_EST_CENTRO_MAN", "Z_EST_NUCLEO", "Z_EST_SQUADRA", "Z_EST_SORVEGLIANZA", "StartPoint", "EndPoint", "LinearLength", "LinearUnit",];
 				const formattingClassNames = ["DATA_AGG", "DATA_FATT_SOSP", "Z_VET_DATADELIBERA_T_1", "Z_VET_DATAPRATICA_T_1", "Z_TVT_DATAVERBALE_T_1", "Z_ESM_VALIDADAL", "Z_ESM_VALIDAAL", "Z_TRT_DATACOMP_KI_1", "Z_DATADELIBERA_T_1", "Z_DATAPRATICA_T_1", "Z_DATAVERBALE_T_1", "Z_ESI_DATAPROTCOMP_I_1", "Z_ESTESE_VALIDAAL", "Z_ESTESE_VALIDADAL", "Z_EST_VALIDAAL", "Z_EST_VALIDADAL", "Z_I_ESI_DATAPROTCOMP", "Z_KI_DATACOMP", "Z_T_DATADELIBERA", "Z_T_DATAPRATICA", "Z_T_DATAVERBALE", "Z_DT", "Z_KI_DATACOMP_PROVV", "Z_STD_DATAVERBALE", "Z_DATA_ODS"]
 				const editableColumn = column.colnoout
 				const isNonEditableColumn = nonEditableClassNames.includes(column.key);
@@ -2118,6 +2121,8 @@ sap.ui.define([
 								new_value["Z_STRADA1_SU_OPERA"] = strada;
 							if (controller.class_name.key === "Z_SOVRAPPASSI")
 								new_value["Z_STRADA"] = strada;
+							if (controller.class_name.key === "Z_O_03_OPERELAM")
+								new_value["Z_SP_STRADA1_SU_OPERA"] = strada;
 						}
 
 						values.push(new_value)
