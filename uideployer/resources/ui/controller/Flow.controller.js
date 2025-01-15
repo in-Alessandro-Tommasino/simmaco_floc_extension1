@@ -1421,7 +1421,7 @@ sap.ui.define([
 			}
 			//--------------------------------------Codice campo note dinamico
 			const nonEditableClassNames = ["Z_EST_CENTRO_MAN", "Z_EST_NUCLEO", "Z_EST_SQUADRA", "Z_EST_SORVEGLIANZA", "StartPoint", "EndPoint", "LinearLength", "LinearUnit"];
-			const formattingClassNames = ["DATA_AGG", "DATA_FATT_SOSP", "Z_VET_DATADELIBERA_T_1", "Z_VET_DATAPRATICA_T_1", "Z_TVT_DATAVERBALE_T_1", "Z_ESM_VALIDADAL", "Z_ESM_VALIDAAL", "Z_TRT_DATACOMP_KI_1", "Z_DATADELIBERA_T_1", "Z_DATAPRATICA_T_1", "Z_DATAVERBALE_T_1", "Z_ESI_DATAPROTCOMP_I_1", "Z_ESTESE_VALIDAAL", "Z_ESTESE_VALIDADAL", "Z_EST_VALIDAAL", "Z_EST_VALIDADAL", "Z_I_ESI_DATAPROTCOMP", "Z_KI_DATACOMP", "Z_T_DATADELIBERA", "Z_T_DATAPRATICA", "Z_T_DATAVERBALE", "Z_DT", "Z_KI_DATACOMP_PROVV", "Z_STD_DATAVERBALE", "Z_DATA_ODS"]
+			const formattingClassNames = ["DATA_AGG", "DATA_FATT_SOSP", "Z_VET_DATADELIBERA_T_1", "Z_VET_DATAPRATICA_T_1", "Z_TVT_DATAVERBALE_T_1", "Z_ESM_VALIDADAL", "Z_ESM_VALIDAAL", "Z_TRT_DATACOMP_KI_1", "Z_DATADELIBERA_T_1", "Z_DATAPRATICA_T_1", "Z_DATAVERBALE_T_1", "Z_ESI_DATAPROTCOMP_I_1", "Z_ESTESE_VALIDAAL", "Z_ESTESE_VALIDADAL", "Z_EST_VALIDAAL", "Z_EST_VALIDADAL", "Z_I_ESI_DATAPROTCOMP", "Z_T_DATADELIBERA", "Z_T_DATAPRATICA", "Z_T_DATAVERBALE", "Z_DT", "Z_KI_DATACOMP", "Z_KI_DATACOMP_PROVV", "Z_STD_DATAVERBALE", "Z_DATA_ODS"]
 			const editableColumn = column.colnoout
 			const isNonEditableColumn = nonEditableClassNames.includes(column.key);
 			const shouldBeFormatted = formattingClassNames.includes(column.key)
@@ -1440,6 +1440,9 @@ sap.ui.define([
 					text: {
 						parts: [{ path: `stepModel>${column.key}` }],
 						formatter: function (value) {
+							if (column.key === "Z_KI_DATACOMP") {
+								return value; // Nessuna formattazione applicata
+							}
 							if (column.key === "LinearUnit") {
 								return value ? value.toLowerCase() : '';
 							} else if (column.key) {
