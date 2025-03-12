@@ -1548,11 +1548,14 @@ sap.ui.define([
 				new sap.ui.model.Filter("ClassNumber", sap.ui.model.FilterOperator.EQ, stepModel.getProperty("/filters/class/key")),
 				new sap.ui.model.Filter("Charact", sap.ui.model.FilterOperator.EQ, column.key),
 			]
-
+			var combineFilter = new Filter({
+                filters: aFilters,
+                and: true
+            })
 			const oController = this
 			oController.loadata_busy_dialog.open()
-			oModel.read("/matchcodecharset", {
-				filters: aFilters,
+			oModel.read("/matchcodecharSet", {
+				filters: [combineFilter],
 				success: function (oData, oRes) {
 					oController.loadata_busy_dialog.close()
 					stepModel.setProperty("/value_help/items", oData.results.flat().map(item => {
