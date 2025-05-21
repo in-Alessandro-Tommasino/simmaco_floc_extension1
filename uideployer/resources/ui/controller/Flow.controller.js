@@ -501,8 +501,8 @@ sap.ui.define([
 			const modello_input = this.getView().getModel("ModelloInput")
 			inputModel.ExternalNumber = this.getView().getModel("ModelloFragment").oData.ExternalNumber
 			const stepModel = this.getView().getModel("stepModel")
-			 // Funzione per convertire stringa in formato europeo a float
-			 function convertToFloat(euroNumber) {
+			// Funzione per convertire stringa in formato europeo a float
+			function convertToFloat(euroNumber) {
 				// Se ci sono più di un punto, è un numero grande con separatori delle migliaia
 				if ((euroNumber.match(/\./g) || []).length > 1) {
 					// Rimuove tutti i punti (separatore delle migliaia)
@@ -516,7 +516,7 @@ sap.ui.define([
 					return parseFloat(euroNumber.replace(".", "").replace(",", "."));
 				}
 			}
-		
+
 			const tratta_start_point = convertToFloat(modello_input.getProperty("/DataGeneral/StartPoint"));
 			const tratta_end_point = convertToFloat(modello_input.getProperty("/DataGeneral/EndPoint"));
 			let start_point = input_model.getProperty("/StartPoint")
@@ -612,7 +612,7 @@ sap.ui.define([
 					if (controller.class_name.key === "Z_SOVRAPPASSI")
 						new_value["Z_STRADA"] = inputModel.strada;
 					if (controller.class_name.key === "Z_O_03_OPERELAM")
-					    new_value["Z_SP_STRADA1_SU_OPERA"] = inputModel.strada;
+						new_value["Z_SP_STRADA1_SU_OPERA"] = inputModel.strada;
 				}
 				let se_value_set = []
 
@@ -952,21 +952,21 @@ sap.ui.define([
 							new sap.ui.model.Filter("RemoveDuplicates", sap.ui.model.FilterOperator.EQ, "Zattribsap")
 						],
 						success: function (oData) {
-                    for (const res of oData.results) {
-                        const columnExists = window.data_model.columns.some(column => column.key === res.Zattribsap);
-                        if (!columnExists) {
-                            window.data_model.columns.push({
-                                key: res.Zattribsap,
-                                descr: res.Atbez,
-                                atfor: res.atfor,
-                                noout: res.noout,
-                                colnoout: res.colnoout,
-                                NO_DISPLAY: res.NO_DISPLAY,
-                            });
-                        }
-                    }
-                    resolve();
-                },
+							for (const res of oData.results) {
+								const columnExists = window.data_model.columns.some(column => column.key === res.Zattribsap);
+								if (!columnExists) {
+									window.data_model.columns.push({
+										key: res.Zattribsap,
+										descr: res.Atbez,
+										atfor: res.atfor,
+										noout: res.noout,
+										colnoout: res.colnoout,
+										NO_DISPLAY: res.NO_DISPLAY,
+									});
+								}
+							}
+							resolve();
+						},
 						error: function (oErr) {
 							resolve()
 						}
@@ -1549,9 +1549,9 @@ sap.ui.define([
 				new sap.ui.model.Filter("Charact", sap.ui.model.FilterOperator.EQ, column.key),
 			]
 			var combineFilter = new Filter({
-                filters: aFilters,
-                and: true
-            })
+				filters: aFilters,
+				and: true
+			})
 			const oController = this
 			oController.loadata_busy_dialog.open()
 			oModel.read("/matchcodecharSet", {
@@ -2053,10 +2053,10 @@ sap.ui.define([
 						var max = 0
 						var entrata = false
 						const found =
-							values
-								?.filter(x => x.StartPoint.trim() === start_point.replace(".", "") && x.EndPoint.trim() === end_point.replace(".", ""))
-								?.map(x => x.ID)
-								?.sort((a, b) => {
+							values?.filter(x =>
+								(x.StartPoint.trim() === start_point.replace(".", "") && x.EndPoint.trim() === end_point.replace(".", "")) ||
+								(x.StartPoint.trim() === start_point && x.EndPoint.trim() === end_point)
+							)?.map(x => x.ID)?.sort((a, b) => {
 									// Converte le stringhe in numeri interi e confronta
 									const numA = parseInt(a, 10);
 									const numB = parseInt(b, 10);

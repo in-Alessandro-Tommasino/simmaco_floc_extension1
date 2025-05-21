@@ -75,7 +75,7 @@ resources:
   - name: simmflocext-acs
     type: org.cloudfoundry.managed-service
     parameters:
-      service: asset-central-preview
+      service: asset-central
       service-plan: standard
   - name: simmflocext-dest
     type: org.cloudfoundry.managed-service
